@@ -1,0 +1,20 @@
+/* Design 1, the plain promise: warm, generous, a serif headline and the offer as a ticket. */
+.d1 { --bg: #fbf6ee; --surface: #fffdf9; --fg: #2a1f17; --muted: #5e5148; --accent: #a5432a; --accent-soft: #f6e3d9; --line: #eadccd; --note: #f7ecdc; }
+@media (prefers-color-scheme: dark) {
+  .d1 { --bg: #1a1512; --surface: #231c18; --fg: #f1e9e1; --muted: #c2b5aa; --accent: #f0a084; --accent-soft: #3a261d; --line: #3a2f28; --note: #2b221b; }
+}
+.d1 h1, .d1 h2, .d1 .price { font-family: Georgia, "Iowan Old Style", "Times New Roman", serif; font-weight: 700; }
+.d1 h1 { font-size: clamp(2.3rem, 7.5vw, 4.4rem); line-height: 1.05; letter-spacing: -.015em; }
+.d1-hero { padding: clamp(2.5rem, 9vw, 6rem) 0 clamp(2rem, 6vw, 4rem); background: radial-gradient(circle at 85% 10%, var(--accent-soft), transparent 55%); }
+.d1-hero-grid { display: grid; gap: 2rem; grid-template-columns: 1fr; align-items: center; }
+@media (min-width: 52rem) { .d1-hero-grid { grid-template-columns: 1.6fr 1fr; } }
+.d1-ticket { background: var(--surface); border: 2px dashed var(--accent); border-radius: .8rem; padding: 1.3rem 1.3rem 1rem; box-shadow: 0 .6rem 1.6rem rgba(90, 50, 30, .12); }
+.d1-ticket h2 { font-size: 1.3rem; margin: .7rem 0 .2rem; }
+.d1-ticket .price { color: var(--accent); }
+.d1-anchor { border-top: 1px solid var(--line); padding-top: .8rem; }
+.d1-promises { list-style: none; counter-reset: p; padding: 0; margin: 1.5rem 0; display: grid; gap: 1.5rem 2rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr)); }
+.d1-promises li { counter-increment: p; border-top: 3px solid var(--accent); padding-top: .8rem; }
+.d1-promises li::before { content: counter(p); display: block; font: 700 2.4rem/1 Georgia, "Times New Roman", serif; color: var(--accent); margin-bottom: .4rem; }
+.d1-promises p { color: var(--muted); margin: 0; }
+.d1-rent { background: var(--note); }
+.d1-rent h2 { font-size: clamp(1.7rem, 5vw, 2.6rem); }

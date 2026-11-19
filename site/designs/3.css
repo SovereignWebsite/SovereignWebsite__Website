@@ -1,0 +1,21 @@
+/* Design 3, under your own roof: a deep blue hero with a drawn roof over three rooms. */
+.d3 { --bg: #f3f5fa; --surface: #ffffff; --fg: #14203a; --muted: #47546e; --accent: #1f4aa0; --accent-soft: #e2e9f7; --line: #d9dfeb; --note: #e9eef8; --gold: #9a6f12; }
+@media (prefers-color-scheme: dark) {
+  .d3 { --bg: #0d1424; --surface: #141d31; --fg: #e7ecf6; --muted: #a8b3c9; --accent: #9bbcff; --accent-soft: #1a2747; --line: #26324d; --note: #182340; --gold: #e7c264; }
+}
+.d3-hero { background: linear-gradient(160deg, #12285a, #1f4790); color: #f4f6fb; padding: clamp(2.5rem, 9vw, 6rem) 0 clamp(2rem, 6vw, 4rem); }
+@media (prefers-color-scheme: dark) { .d3-hero { background: linear-gradient(160deg, #0a1631, #16336b); } }
+.d3-hero .eyebrow { color: #e7c264; }
+.d3-hero .lead { color: #d8dfee; }
+.d3-hero .button { background: #e7c264; color: #12285a; }
+.d3-hero :focus-visible { outline-color: #e7c264; }
+.d3-hero h1 { font-weight: 650; letter-spacing: -.01em; }
+.d3-hero-grid { display: grid; gap: 2rem; align-items: center; }
+@media (min-width: 50rem) { .d3-hero-grid { grid-template-columns: 1.4fr 1fr; } }
+.d3-roof { color: #e7c264; width: 100%; max-width: 22rem; justify-self: center; }
+.d3-rooms { list-style: none; padding: 0; margin: 1.5rem 0 1rem; display: grid; gap: 0; grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr)); border: 2px solid var(--accent); border-radius: .3rem; background: var(--surface); }
+.d3-rooms li { padding: 1.2rem 1.2rem .4rem; border-top: 6px solid var(--gold); }
+.d3-rooms li + li { box-shadow: -1px 0 0 var(--line); }
+.d3-rooms h3 { color: var(--accent); }
+.d3-rooms p { color: var(--muted); }
+.d3-rooms p:last-child { color: inherit; }

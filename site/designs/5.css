@@ -1,0 +1,33 @@
+/* Design 5, the open pattern: monospace on graph paper, the repository as a file tree. */
+.d5 { --bg: #f7f8f5; --surface: #ffffff; --fg: #17201a; --muted: #4a564e; --accent: #1f6b45; --accent-soft: #e1efe6; --line: #d8e0da; --note: #eaf1ec; --grid: rgba(31,107,69,.07); }
+@media (prefers-color-scheme: dark) {
+  .d5 { --bg: #0e1210; --surface: #151b17; --fg: #d8e6dc; --muted: #9fb2a5; --accent: #7fdca6; --accent-soft: #18261d; --line: #26332a; --note: #16201a; --grid: rgba(127,220,166,.06); }
+}
+.d5 { background-image: linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px); background-size: 24px 24px; }
+.d5 h1, .d5 h2, .d5 .eyebrow, .d5 .tag, .d5 .num { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+.d5 h1 { font-size: clamp(1.8rem, 5.5vw, 3.2rem); letter-spacing: -.02em; max-width: 24ch; }
+.d5 h2 { font-size: clamp(1.3rem, 3.4vw, 1.7rem); }
+.d5 h2::before { content: "## "; content: "## " / ""; color: var(--accent); }
+.d5 .eyebrow::before { content: "$ "; content: "$ " / ""; }
+.d5-hero { padding: clamp(2.5rem, 9vw, 6rem) 0 clamp(2rem, 6vw, 4rem); }
+.d5 .section { border-top: 1px dashed var(--line); }
+.d5-split { display: grid; gap: 1.5rem; align-items: start; }
+@media (min-width: 52rem) { .d5-split { grid-template-columns: 1fr 1.2fr; } }
+.d5-tree { list-style: none; margin: 0; padding: 1rem 1.1rem; background: var(--surface); border: 1px solid var(--line); border-radius: .4rem; font: .92rem/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+.d5-tree li { padding: .3rem 0 .3rem 1.4rem; position: relative; }
+.d5-tree li:first-child { padding-left: 0; }
+.d5-tree li:not(:first-child)::before { content: ""; position: absolute; left: .35rem; top: 0; bottom: 0; border-left: 1px solid var(--muted); }
+.d5-tree li:not(:first-child)::after { content: ""; position: absolute; left: .35rem; top: .95rem; width: .7rem; border-top: 1px solid var(--muted); }
+.d5-tree li:last-child::before { bottom: auto; height: .95rem; }
+.d5-tree code { background: none; padding: 0; color: var(--accent); font-weight: 700; }
+.d5-tree span { display: block; color: var(--muted); font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; font-size: .9rem; }
+.d5-stack { list-style: none; padding: 0; margin: 1.5rem 0 1rem; max-width: var(--text); display: grid; gap: 0; }
+.d5-stack li { border: 2px solid var(--fg); border-top-width: 0; padding: .8rem 1rem; background: var(--surface); }
+.d5-stack li:first-child { border-top-width: 2px; border-radius: .3rem .3rem 0 0; }
+.d5-stack li:last-child { border-radius: 0 0 .3rem .3rem; }
+.d5-stack li.top { background: var(--accent); color: var(--bg); border-color: var(--accent); }
+.d5-stack strong { display: block; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+.d5-stack span { font-size: .95rem; opacity: .85; }
+.d5-principles { max-width: var(--text); padding-left: 1.4rem; }
+.d5-principles li { margin-bottom: .55rem; }
+.d5-principles li::marker { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; color: var(--accent); font-weight: 700; }

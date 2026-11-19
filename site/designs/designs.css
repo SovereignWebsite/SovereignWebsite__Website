@@ -1,0 +1,46 @@
+/* Shared by the five homepage designs and their chooser. Builds on ../style.css tokens. */
+.visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.design-bar { background: var(--note); border-bottom: 1px solid var(--line); font-size: .92rem; }
+.design-bar p { margin: 0; padding: .55rem 0; }
+
+/* Page sketches, drawn in CSS: decorative, the same colours in light and dark. */
+.thumb { display: block; position: relative; aspect-ratio: 4 / 3; border-radius: .45rem; overflow: hidden; padding: 9% 9%; border: 1px solid rgba(127,127,127,.35); }
+.thumb span, .thumb i { display: block; }
+.thumb .t-h { height: 11%; width: 70%; border-radius: 2px; margin-bottom: 5%; }
+.thumb .t-h.short { width: 48%; }
+.thumb .t-l { height: 5%; width: 62%; border-radius: 2px; margin-bottom: 4%; opacity: .55; }
+.thumb .t-l.short { width: 40%; }
+.thumb .t-btn { height: 10%; width: 32%; border-radius: 3px; margin-top: 6%; }
+.t1 { background: #fbf6ee; } .t1 .t-h { background: #2a1f17; } .t1 .t-l { background: #5e5148; } .t1 .t-btn { background: #a5432a; }
+.t1 .t-ticket { position: absolute; right: 8%; top: 18%; width: 24%; height: 44%; background: #f6e3d9; border: 2px dashed #a5432a; border-radius: 4px; }
+.t2 { background: #f6f7f9; } .t2 .t-h { background: #15181d; } .t2 .t-l { background: #4d5561; }
+.t2 .t-scale { display: grid; grid-template-columns: repeat(6, 1fr); gap: 4%; height: 26%; margin: 4% 0 7%; }
+.t2 .t-scale i:nth-child(1) { background: #b3412e; } .t2 .t-scale i:nth-child(2) { background: #c66a28; } .t2 .t-scale i:nth-child(3) { background: #b68a1f; }
+.t2 .t-scale i:nth-child(4) { background: #7f8f2c; } .t2 .t-scale i:nth-child(5) { background: #3d8a5a; } .t2 .t-scale i:nth-child(6) { background: #2a6148; }
+.t3 { background: linear-gradient(#14306b, #1f4790); } .t3 .t-l { background: #f4f6fb; margin: 6% auto 0; width: 50%; }
+.t3 .t-roof { width: 0; height: 0; margin: 0 auto; border-left: 38px solid transparent; border-right: 38px solid transparent; border-bottom: 26px solid #e7c264; max-width: 100%; }
+.t3 .t-rooms { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3%; width: 72%; height: 30%; margin: 0 auto; }
+.t3 .t-rooms i { border: 2px solid #f4f6fb; border-top: 0; }
+.t4 { background: #1e1e22; } .t4 .t-h { background: #f4f1ec; } .t4 .t-l { background: #c9a6f2; }
+.t4 .t-tiles { display: grid; grid-template-columns: repeat(5, 1fr); gap: 4%; height: 34%; margin-bottom: 7%; }
+.t4 .t-tiles i { border-radius: 2px; } .t4 .t-tiles i:nth-child(1) { background: #fbf6ee; } .t4 .t-tiles i:nth-child(2) { background: #f6f7f9; }
+.t4 .t-tiles i:nth-child(3) { background: #1f4790; } .t4 .t-tiles i:nth-child(4) { background: #6a3d9a; } .t4 .t-tiles i:nth-child(5) { background: #d7e8dc; }
+.t5 { background-color: #f7f8f5; background-image: linear-gradient(rgba(31,107,69,.13) 1px, transparent 1px), linear-gradient(90deg, rgba(31,107,69,.13) 1px, transparent 1px); background-size: 12px 12px; display: grid; grid-template-columns: 1fr 1fr; gap: 8%; }
+.t5 .t-code i { height: 9%; background: #1f6b45; margin-bottom: 9%; width: 90%; border-radius: 1px; } .t5 .t-code i.s { width: 55%; margin-left: 15%; opacity: .6; }
+.t5 .t-stack { display: grid; gap: 6%; align-content: center; } .t5 .t-stack i { height: 1rem; max-height: 100%; border: 2px solid #17201a; border-radius: 2px; }
+.t5 .t-stack i:first-child { background: #1f6b45; border-color: #1f6b45; }
+
+/* Chooser */
+.chooser { grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr)); }
+.chooser-card { display: flex; flex-direction: column; }
+.chooser-thumb { display: block; margin-bottom: .9rem; }
+.chooser-card h3 a { color: var(--fg); text-decoration: none; }
+.chooser-card h3 a:hover { text-decoration: underline; }
+.chooser-msg { font-weight: 600; }
+.chooser-card dl { margin: 0 0 1rem; font-size: .95rem; }
+.chooser-card dt { font-weight: 650; color: var(--muted); font-size: .8rem; letter-spacing: .06em; text-transform: uppercase; }
+.chooser-card dd { margin: 0 0 .5rem; }
+.chooser-card > p:last-child { margin-top: auto; font-weight: 600; }
+.chooser-card .num { align-self: flex-start; }
+.levels + p { margin-top: 1.1rem; }
+.grid + p { margin-top: 1rem; }
