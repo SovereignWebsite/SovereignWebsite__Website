@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Confiança</title>
+<meta name="description" content="Como o sovereignwebsite.ai é construído e verificado: uma política de comportamento escrita para os agentes e pipelines, cada commit assinado com uma chave publicada, e um site sem scripts, cookies nem rastreio.">
+<meta name="author" content="Dinis Cruz">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../style.css">
+<link rel="alternate" hreflang="en-GB" href="https://sovereignwebsite.ai/trust.html">
+<link rel="alternate" hreflang="pt-PT" href="https://sovereignwebsite.ai/pt/trust.html">
+</head>
+<body>
+<a class="skip" href="#main">Saltar para o conteúdo</a>
+<nav class="family" aria-label="The Sovereign Website family">
+  <ul>
+    <li><a href="https://sovereignwebsite.ai/" aria-current="true">Sovereign Website</a></li>
+    <li><a href="https://sovereignwebsite.org/">Principles</a></li>
+    <li><a href="https://sovereignwebsite.site/">Hosted</a></li>
+    <li><a href="https://hub.sovereignwebsite.site/">Hub</a></li>
+    <li><a href="https://vault.sovereignwebsite.site/">Vault</a></li>
+    <li class="family-sep"><a href="https://agenticcells.ai/">AgentiCCells</a></li>
+    <li><a href="https://riskmandate.ai/">RiskMandate</a></li>
+    <li><a href="https://newsroom.sgit.ai/">Newsroom</a></li>
+  </ul>
+</nav>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <svg viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect x="2" y="2" width="28" height="28" rx="7" fill="none" stroke="currentColor" stroke-width="2.5"/><path d="M10 16.5l4 4 8-9" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Sovereign Agentic Website
+    </a>
+    <nav class="site-nav" aria-label="Principal">
+      <ul>
+        <li><a href="index.html">Início</a></li>
+        <li><a href="how-it-works.html">Como funciona</a></li>
+        <li><a href="maturity.html">Modelo de maturidade</a></li>
+        <li><a href="examples.html">Exemplos</a></li>
+        <li><a href="pricing.html">Preços</a></li>
+        <li><a href="moving.html">Mudar o seu site</a></li>
+        <li><a href="domain.html">O seu domínio</a></li>
+        <li><a href="open.html">Padrão aberto</a></li>
+        <li><a href="partners.html">Parceiros</a></li>
+        <li><a href="trust.html" aria-current="page">Confiança</a></li>
+      </ul>
+    </nav>
+    <nav class="lang-switch" aria-label="Idioma">
+      <a href="../trust.html" lang="en-GB" hreflang="en-GB">EN</a> <span aria-hidden="true">|</span> <span lang="pt-PT" aria-current="true">PT</span>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="wrap">
+      <p class="eyebrow">Confiança</p>
+      <h1 id="hero-title">Não fique pela nossa palavra. Leia a política, verifique as assinaturas.</h1>
+      <p class="lead">Este site é construído por uma equipa de agentes, tal como o produto. O que esses agentes podem fazer está escrito publicamente, e cada alteração que fazem é assinada e identifica a sessão que a fez.</p>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="policy-title">
+    <div class="wrap">
+      <h2 id="policy-title">A política de comportamento</h2>
+      <div class="prose">
+        <p>A organização SovereignWebsite é gerida a partir de um único repositório de controlo, <a href="https://github.com/SovereignWebsite/SovereignWebsite__Factory">SovereignWebsite__Factory</a>, ao abrigo de uma Política de Comportamento de Agentes: <a href="https://github.com/SovereignWebsite/SovereignWebsite__Factory/blob/dev/policy/abp.json">policy/abp.json</a>. A CI lê-a em cada execução. Tudo o que ela não lista é recusado. Em resumo:</p>
+      </div>
+      <ul class="checklist">
+        <li><strong>Cada agente só pode alterar os caminhos listados para ele,</strong> e apenas no ramo dev. As alterações à própria política, e aos pipelines, só produzem efeito quando Dinis Cruz faz o seu merge.</li>
+        <li><strong>Cada pipeline só pode realizar as ações listadas para ele.</strong> O que gere os repositórios pode criá-los e configurá-los; nunca pode apagar, transferir, arquivar ou tornar privado um repositório, alterar membros, ou enfraquecer um ruleset.</li>
+        <li><strong>O pipeline de DNS só pode acrescentar ou atualizar registos</strong> indicados no repositório, nas zonas do próprio projeto; nunca pode apagar um registo ou uma zona, nem transferir um domínio.</li>
+        <li><strong>Cada privilégio está listado com a sua razão,</strong> para a GitHub App e para o papel na nuvem que os pipelines usam.</li>
+        <li><strong>O main só avança quando Dinis Cruz faz o merge de uma release.</strong> Os agentes fazem push para dev. Os rulesets proíbem apagar qualquer dos ramos ou fazer force-push para eles, e só Dinis, como administrador da organização, os pode contornar no main.</li>
+        <li><strong>Nenhum agente pode mostrar ou fazer commit de uma chave ou token,</strong> nem nomear um potencial cliente privado. As regras exigem os testes, uma verificação da política e uma análise de fugas de informação antes de cada push.</li>
+      </ul>
+      <p class="small muted">Fonte: <a href="https://github.com/SovereignWebsite/SovereignWebsite__Factory/blob/dev/policy/abp.json">policy/abp.json</a> e o README da fábrica. Sobre políticas de comportamento em geral: <a href="https://newsroom.sgit.ai/articles/designing-sovereignwebsite-ai.html">Designing sovereignwebsite.ai</a> (em inglês) e <a href="https://newsroom.sgit.ai/articles/a-website-with-a-team-inside.html">A website with a team inside</a>.</p>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="signed-title">
+    <div class="wrap">
+      <h2 id="signed-title">Commits assinados</h2>
+      <div class="prose">
+        <p>Cada commit que um agente faz é assinado com a sua própria chave, como uma assinatura SSH do git, e traz duas linhas que dizem quem o fez: <code>Agent:</code>, o nome do agente, e <code>Claude-Session:</code>, uma ligação para a sessão em que trabalhou. A metade pública de cada chave está publicada em <a href="https://github.com/SovereignWebsite/SovereignWebsite__Factory/blob/dev/team/keys.json">team/keys.json</a>, com a sua impressão digital, o seu papel e a sessão que a criou. Só a metade pública está lá.</p>
+        <p>No repositório da fábrica, o pipeline Checks verifica as assinaturas e os caminhos da política em cada push. Os commits no próprio repositório deste site são assinados da mesma forma, e pode lê-los no seu <a href="https://github.com/SovereignWebsite/SovereignWebsite__Website">histórico no GitHub</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="site-title">
+    <div class="wrap">
+      <h2 id="site-title">O que este site faz e não faz</h2>
+      <ul class="grid">
+        <li class="card"><h3>Sem scripts</h3><p>HTML simples e uma folha de estilos. A <a href="maturity.html#self-check">autoavaliação</a> funciona sem JavaScript.</p></li>
+        <li class="card"><h3>Sem cookies, sem rastreio</h3><p>Nada para aceitar, nada para esconder atrás de um banner, e nenhuma ferramenta de análise de qualquer tipo na página.</p></li>
+        <li class="card"><h3>Sem formulários</h3><p>O site não recolhe nada. As suas respostas à autoavaliação ficam consigo.</p></li>
+        <li class="card"><h3>Nada de terceiros</h3><p>Sem tipos de letra, imagens ou scripts de terceiros: o seu navegador só pede as páginas a este site.</p></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="claims-title">
+    <div class="wrap">
+      <h2 id="claims-title">Cada afirmação com a sua fonte</h2>
+      <div class="prose">
+        <p>As palavras neste site vêm de artigos de Dinis Cruz, publicados na <a href="https://newsroom.sgit.ai/articles/designing-sovereignwebsite-ai.html">newsroom da SGit-AI</a>, e cada secção remete para aquele de onde vem. Quando algo é um plano ou uma proposta, di-lo. Quando algo não existe ainda, também o diz:</p>
+        <ul>
+          <li>Nada foi vendido ainda, e o serviço alojado com este nome não existe ainda.</li>
+          <li>O pipeline que publica um commit em muitos alojamentos não existe ainda; este site é servido apenas pelo GitHub Pages. Veja os <a href="examples.html">exemplos</a>.</li>
+          <li>A campanha no Kickstarter é um plano: nada foi submetido e o objetivo não está definido. Veja os <a href="pricing.html#kick-title">preços</a>.</li>
+          <li>Os termos de parceria são um primeiro rascunho, e nenhum parceiro assinou. Veja <a href="partners.html">parceiros</a>.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <nav aria-label="Rodapé">
+      <ul>
+        <li><a href="index.html">Início</a></li>
+        <li><a href="how-it-works.html">Como funciona</a></li>
+        <li><a href="maturity.html">Modelo de maturidade</a></li>
+        <li><a href="examples.html">Exemplos</a></li>
+        <li><a href="pricing.html">Preços</a></li>
+        <li><a href="moving.html">Mudar o seu site</a></li>
+        <li><a href="domain.html">O seu domínio</a></li>
+        <li><a href="open.html">Padrão aberto</a></li>
+        <li><a href="partners.html">Parceiros</a></li>
+        <li><a href="trust.html">Confiança</a></li>
+      </ul>
+    </nav>
+    <p><strong>Ponto da situação:</strong> nada foi vendido ainda, e o serviço alojado com este nome não existe ainda.</p>
+    <p>O sovereignwebsite.ai é feito de ficheiros estáticos: sem scripts, sem formulários, sem cookies, sem rastreio, sem tipos de letra nem imagens de terceiros. As suas palavras vêm de artigos de Dinis Cruz na <a href="https://newsroom.sgit.ai/articles/designing-sovereignwebsite-ai.html">newsroom da SGit-AI</a>. Código-fonte no <a href="https://github.com/SovereignWebsite/SovereignWebsite__Website">GitHub</a>. O Sovereign Website é uma célula da <a href="https://agenticcells.ai">AgentiCCells</a>.</p>
+  </div>
+</footer>
+</body>
+</html>
