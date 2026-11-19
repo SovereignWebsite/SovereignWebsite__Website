@@ -4,7 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>How It Works</title>
-<meta name="description" content="How a sovereign agentic website is made: an interview, your material, a team of agents, five designs, a hand-over, and your first change made by talking to your own AI.">
+<meta name="description" content="How a sovereign agentic website is made: an interview, your material, a team of agents, five designs, a hand-over, your first change made by talking to your own AI, and moving it wherever you like.">
+<meta name="author" content="Dinis Cruz">
 <meta name="color-scheme" content="light dark">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="style.css">
@@ -21,8 +22,14 @@
       <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="how-it-works.html" aria-current="page">How it works</a></li>
+        <li><a href="maturity.html">Maturity model</a></li>
+        <li><a href="examples.html">Examples</a></li>
+        <li><a href="pricing.html">Prices</a></li>
+        <li><a href="moving.html">Moving your site</a></li>
+        <li><a href="domain.html">Your domain</a></li>
         <li><a href="open.html">Open pattern</a></li>
-        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="partners.html">Partners</a></li>
+        <li><a href="trust.html">Trust</a></li>
       </ul>
     </nav>
   </div>
@@ -33,7 +40,7 @@
     <div class="wrap">
       <p class="eyebrow">How it works</p>
       <h1 id="hero-title">From an interview to your own first change.</h1>
-      <p class="lead">A team of agents interviews you, builds the site, shows you designs, and hands it over. From then on, you change it by talking to your own AI, inside a behaviour policy that keeps the site yours while agents work on it.</p>
+      <p class="lead">A team of agents interviews you, builds the site, shows you five designs, and hands it over. From then on you change it by talking to your own AI, inside a behaviour policy that keeps the site yours while agents work on it. And you can move it whenever you like.</p>
     </div>
   </section>
 
@@ -41,7 +48,7 @@
     <div class="wrap">
       <h2 id="steps-title">Six steps</h2>
       <ol class="steps">
-        <li>
+        <li id="interview">
           <h3>An interview</h3>
           <p>Most people do not know what they want from a website until someone asks them the right questions. So the first step is an interview by an AI, about five things: what the site is for and who should read it; the sections you want; the photos, videos and documents you have; three websites you like and why; and what to avoid, and what must stay private. It ends with a one-page brief, in your words, that you can read and correct.</p>
         </li>
@@ -53,9 +60,9 @@
           <h3>A team of agents builds it</h3>
           <p>Even the smallest site is a team, not one prompt: a conductor who takes the brief and hands out the work, a researcher who reads what you gave and what is public, with sources, a designer, a developer who builds and releases the site with its checks, and a security reviewer. Each has a written job description and a behaviour policy, and each signs its work.</p>
         </li>
-        <li>
+        <li id="designs">
           <h3>Five designs to choose from</h3>
-          <p>People find it hard to describe a design, and easy to point at one. The five designs are inspired by the sites you said you like: not copies, but the qualities you named, in five different readings. You pick one, or mix them; the chosen one goes live and the others are kept.</p>
+          <p>People find it hard to describe a design, and easy to point at one. The five designs are inspired by the sites you said you like: not copies, but the qualities you named, in five different readings. You pick one; the chosen one goes live and the others are kept.</p>
         </li>
         <li>
           <h3>Hand-over</h3>
@@ -82,7 +89,7 @@
         </li>
         <li class="card">
           <h3>A live site on its address</h3>
-          <p>With HTTPS. On a hosted site, its own address on sovereignwebsite.site until you point your own domain at it.</p>
+          <p>On a hosted site, its own address on sovereignwebsite.site until you point your own domain at it.</p>
         </li>
         <li class="card">
           <h3>Five designs</h3>
@@ -105,9 +112,31 @@
     </div>
   </section>
 
+  <section class="section" aria-labelledby="team-title">
+    <div class="wrap">
+      <h2 id="team-title">Next: a website with a team inside</h2>
+      <div class="prose">
+        <p>The sites handed over today carry a CLAUDE.md and a behaviour policy for one agent, your own. The next step, not yet built, is to hand over the team itself: six or seven agents already set up and coordinated in your site's repository, each with a brief and a behaviour policy.</p>
+      </div>
+      <ul class="grid">
+        <li class="card"><h3>Conductor</h3><p>The one you talk to, in plain words. It turns a request into a plan, hands out the work, reports back, and asks before anything goes live.</p></li>
+        <li class="card"><h3>Designer</h3><p>Every new page in the style you chose.</p></li>
+        <li class="card"><h3>Writer</h3><p>The words, in your voice, from what you say and send.</p></li>
+        <li class="card"><h3>Developer</h3><p>Builds the change, keeps the checks green, and publishes once you approve.</p></li>
+        <li class="card"><h3>Reviewer</h3><p>Checks prices, claims, consent, privacy and secrets before you see anything.</p></li>
+        <li class="card"><h3>Translator</h3><p>Keeps every page in each of the site's languages.</p></li>
+        <li class="card"><h3>Keeper</h3><p>The weekly care: broken links, speed, accessibility, a certificate, the domain's renewal date.</p></li>
+      </ul>
+      <div class="prose">
+        <p>Because the team lives in your repository, it is yours as the site is: move the site and the team moves with it. It runs on your own AI account, at its cost and within its limits, and wakes when there is a request or a weekly check.</p>
+      </div>
+      <p class="small muted">Source: <a href="https://newsroom.sgit.ai/articles/a-website-with-a-team-inside.html">A website with a team inside</a>. The roles are a proposal.</p>
+    </div>
+  </section>
+
   <section class="section" aria-labelledby="rails-title">
     <div class="wrap">
-      <h2 id="rails-title">Your own AI, with guard rails</h2>
+      <h2 id="rails-title">Changing it by talking, with guard rails</h2>
       <div class="prose">
         <p>You change the site with your own AI, not through our platform. Because it is your AI, the site can do whatever it can connect to: a new page, a rewritten section, a CV read and turned into an updated experience section, a feed from another system.</p>
         <p>An AI that edits your site can also publish something private, embed a script from somewhere unsafe, or break a page. So every site ships with guard rails:</p>
@@ -117,65 +146,52 @@
           <li>Checks and a leak scan run before anything goes live.</li>
           <li>A security agent reviews what each change exposes.</li>
         </ul>
-        <p>A person who knows what they are doing can override the policy; most owners will never want to. Where an owner wants a person watching over it, that is a service a partner can sell.</p>
+        <p>Where an owner wants a person watching over it, that is a service a <a href="partners.html">partner</a> can sell.</p>
       </div>
       <p class="small muted">Source: <a href="https://newsroom.sgit.ai/articles/the-website-cell.html">The website cell</a> and <a href="https://newsroom.sgit.ai/articles/static-against-the-platforms.html">Static against the platforms</a>.</p>
     </div>
   </section>
 
-  <section class="section" aria-labelledby="static-title">
+  <section class="section" aria-labelledby="move-title">
     <div class="wrap">
-      <h2 id="static-title">Static by design</h2>
+      <h2 id="move-title">Moving it</h2>
       <div class="prose">
-        <p>The site is files, built once and served as they are. There is no server code running, no database, no plugin to patch, and no login page on the site itself to attack. There are no cookies unless you add them, so there is nothing to put behind a banner, and no tracking by us.</p>
-        <p>A site that runs plugins, themes and a database on a server inherits every flaw in all of them, and has to be patched by someone. A static site removes that category of flaw. No independent study measures how much safer static sites are, so we do not claim a number; the argument is simply that there is very little left to attack.</p>
+        <p>The site is files, built once and served as they are. There is no server code running, no database, no plugin to patch, and no login page on the site itself to attack. There are no cookies unless you add them, and no tracking by us. So any host that can serve files can serve it, without changes: GitHub Pages for free, or any web host, in any region, or your own computer.</p>
+        <p>Being able to move is the claim; having moved is the proof. Our sites deploy today to GitHub Pages only. A pipeline that deploys the same commit to many hosts, one of them in Europe and one your own machine, is the next step and does not exist yet. When it does, this site will be its first proof.</p>
       </div>
-      <p class="small muted">Source: <a href="https://newsroom.sgit.ai/articles/static-against-the-platforms.html">Static against the platforms</a>.</p>
-    </div>
-  </section>
-
-  <section class="section" aria-labelledby="existing-title">
-    <div class="wrap">
-      <h2 id="existing-title">Already have a site?</h2>
-      <div class="prose">
-        <p>Then you have already answered most of the questions. Your site is the material: the words, the photos, the structure. The interview asks what you would change, and the five designs are better versions of what you have. For a WordPress or Squarespace site, its export can carry the content across. A converter that does this automatically is a proposal and does not exist yet.</p>
-      </div>
-      <p class="small muted">Source: <a href="https://newsroom.sgit.ai/articles/start-with-an-interview.html">Start with an interview</a> and <a href="https://newsroom.sgit.ai/articles/static-against-the-platforms.html">Static against the platforms</a>.</p>
-    </div>
-  </section>
-
-  <section class="section" aria-labelledby="address-title">
-    <div class="wrap">
-      <h2 id="address-title">Your address, in your name</h2>
-      <div class="prose">
-        <p>A website you own includes its name. The registrar is where the name is really held, so it matters which one you pick: who it answers to, what the second year costs, and what can be done with the account if a key is ever handed to an agent. Renewal is the common catch: prices often double or triple after the first year.</p>
-        <p>From sixteen registrars compared on their own pages, the three put forward for a European small business were OVHcloud, Hostinger and INWX, each with its catch. The full comparison, with prices as read on 19 November 2026, is in the article.</p>
-      </div>
-      <p class="small muted">Source: <a href="https://newsroom.sgit.ai/articles/your-own-registrar.html">Your own registrar</a>. Not paid placement; prices change.</p>
+      <p class="small muted">Source: <a href="https://newsroom.sgit.ai/articles/what-is-a-sovereign-website.html">What is a sovereign website</a> and <a href="https://newsroom.sgit.ai/articles/static-against-the-platforms.html">Static against the platforms</a>. See where your own site stands on the <a href="maturity.html">maturity model</a>.</p>
     </div>
   </section>
 
   <section class="section" aria-labelledby="next-title">
     <div class="wrap">
-      <h2 id="next-title">Next</h2>
-      <div class="actions">
-        <a class="button" href="open.html">The open pattern</a>
-        <a class="button secondary" href="pricing.html">Pricing</a>
-      </div>
+      <h2 id="next-title">Already have a site, or a domain?</h2>
+      <ul class="grid two">
+        <li class="card"><h3>Moving from a platform</h3><p>Your existing site is the material. <a href="moving.html">Moving from Wix, Squarespace or WordPress</a>.</p></li>
+        <li class="card"><h3>Your name, in your name</h3><p>A website you own includes its address. <a href="domain.html">Owning your domain</a>.</p></li>
+      </ul>
     </div>
   </section>
 </main>
 
 <footer class="site-footer">
   <div class="wrap">
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="how-it-works.html">How it works</a></li>
-      <li><a href="open.html">Open pattern</a></li>
-      <li><a href="pricing.html">Pricing</a></li>
-      <li><a href="https://github.com/SovereignWebsite">SovereignWebsite on GitHub</a></li>
-    </ul>
-    <p>sovereignwebsite.ai is static files: no cookies, no tracking, no scripts. Its words come from articles by Dinis Cruz on the <a href="https://newsroom.sgit.ai/articles/sovereign-agentic-website.html">SGit-AI newsroom</a>.</p>
+    <nav aria-label="Footer">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="how-it-works.html">How it works</a></li>
+        <li><a href="maturity.html">Maturity model</a></li>
+        <li><a href="examples.html">Examples</a></li>
+        <li><a href="pricing.html">Prices</a></li>
+        <li><a href="moving.html">Moving your site</a></li>
+        <li><a href="domain.html">Your domain</a></li>
+        <li><a href="open.html">Open pattern</a></li>
+        <li><a href="partners.html">Partners</a></li>
+        <li><a href="trust.html">Trust</a></li>
+      </ul>
+    </nav>
+    <p><strong>Where things stand:</strong> nothing is sold yet, and the hosted service under this name does not exist yet.</p>
+    <p>sovereignwebsite.ai is static files: no scripts, no forms, no cookies, no tracking, no fonts or images from anyone else. Its words come from articles by Dinis Cruz on the <a href="https://newsroom.sgit.ai/articles/designing-sovereignwebsite-ai.html">SGit-AI newsroom</a>. Source on <a href="https://github.com/SovereignWebsite/SovereignWebsite__Website">GitHub</a>. Sovereign Website is a cell of <a href="https://agenticcells.ai">AgentiCCells</a>.</p>
   </div>
 </footer>
 </body>
