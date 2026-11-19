@@ -216,3 +216,12 @@ details > :last-child { margin-bottom: 0; }
   .site-card dd { margin-bottom: .4rem; }
 }
 code { font: .92em/1.4 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; background: var(--accent-soft); padding: .05rem .3rem; border-radius: .25rem; overflow-wrap: anywhere; }
+
+/* The Sovereign Website family bar: the same on every site in the family. */
+.family{font-size:.8rem;border-bottom:1px solid rgba(127,127,127,.25);background:rgba(127,127,127,.06)}
+.family ul{list-style:none;margin:0 auto;padding:.35rem 1rem;display:flex;flex-wrap:wrap;gap:.25rem .9rem;max-width:72rem}
+.family a{color:inherit;opacity:.8;text-decoration:none}
+.family a:hover,.family a:focus-visible{opacity:1;text-decoration:underline}
+.family a[aria-current="true"]{opacity:1;font-weight:600}
+.family .family-sep{margin-left:auto}
+@media (max-width:40rem){.family .family-sep{margin-left:0}}
