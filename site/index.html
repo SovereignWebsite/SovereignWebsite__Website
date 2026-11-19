@@ -1,27 +1,189 @@
 <!doctype html>
-<html lang="en">
+<html lang="en-GB">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sovereign Agentic Website</title>
-<meta name="description" content="Built by agents, owned by you.">
-<style>
-:root{--bg:#fbfaf7;--fg:#1d1d1b;--muted:#5d5c57;--accent:#2f6b4f;--line:#e4e1d8}
-@media (prefers-color-scheme:dark){:root{--bg:#141513;--fg:#ecebe6;--muted:#a8a69e;--accent:#7fc3a0;--line:#2c2d29}}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:18px/1.6 system-ui,-apple-system,Segoe UI,sans-serif}
-main{max-width:44rem;margin:0 auto;padding:12vh 1rem 4rem}
-.mark{font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);font-weight:600}
-h1{font-size:clamp(2rem,6vw,3.2rem);line-height:1.1;margin:.4rem 0 1rem}
-p{color:var(--muted);margin:0 0 1rem}a{color:var(--accent)}
-footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--line);font-size:.85rem;color:var(--muted)}
-</style>
+<meta name="description" content="Built by agents, owned by you. A website made by a team of agents from what you tell them, in a repository you control, that you can move anywhere.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-<main>
-<div class="mark">Sovereign Agentic Website</div>
-<h1>Built by agents, owned by you.</h1>
-<p>A website built by a team of agents from what you tell them, and owned by you: the files, the schema, the history and the address, in a repository you control, changed by talking to your own AI, and movable anywhere.</p><p>Where a site is hosted is not sovereignty. Being able to move it is.</p><p>This site is being built now, in the open.</p>
-<footer>sovereignwebsite.ai · Part of the <a href="https://github.com/SovereignWebsite">SovereignWebsite</a> organisation · Read why: <a href="https://newsroom.sgit.ai/articles/sovereign-agentic-website.html">Sovereign Agentic Website</a></footer>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <svg viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect x="2" y="2" width="28" height="28" rx="7" fill="none" stroke="currentColor" stroke-width="2.5"/><path d="M10 16.5l4 4 8-9" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Sovereign Agentic Website
+    </a>
+    <nav class="site-nav" aria-label="Main">
+      <ul>
+        <li><a href="index.html" aria-current="page">Home</a></li>
+        <li><a href="how-it-works.html">How it works</a></li>
+        <li><a href="open.html">Open pattern</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="wrap">
+      <p class="eyebrow">Sovereign Agentic Website, SAW for short</p>
+      <h1 id="hero-title">Built by agents,<br>owned by you.</h1>
+      <p class="lead">A website built by a team of agents from what you tell them, and owned by you: the files, the schema, the history and the address, in a repository you control, changed by talking to your own AI, and movable anywhere.</p>
+      <div class="actions">
+        <a class="button" href="how-it-works.html">See how it works</a>
+        <a class="button secondary" href="open.html">The open pattern</a>
+      </div>
+      <div class="note">
+        <p><strong>Where things stand.</strong> The hosted service is being set up, and nothing is sold yet. This site is being built in the open, and its claims link to the articles they come from.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="words-title">
+    <div class="wrap">
+      <h2 id="words-title">Two words that make it different</h2>
+      <ul class="grid two">
+        <li class="card">
+          <h3>Sovereign</h3>
+          <p>The files, the schema, the history and the address are yours, and you can move them anywhere. Ownership is the claim the website platforms cannot make by their own terms.</p>
+        </li>
+        <li class="card">
+          <h3>Agentic</h3>
+          <p>In 2000 the open web gave you software to run yourself, and you or someone you paid still did the work. Now a team of agents does it: it interviews you, builds the site and shows you designs, and afterwards your own AI changes it when you ask, inside a behaviour policy that says what it may and may not touch.</p>
+        </li>
+      </ul>
+      <p class="small muted">Source: <a href="https://newsroom.sgit.ai/articles/sovereign-agentic-website.html">Sovereign Agentic Website</a>, by Dinis Cruz.</p>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="move-title">
+    <div class="wrap">
+      <h2 id="move-title">Where a site is hosted is not sovereignty. Being able to move it is.</h2>
+      <div class="prose">
+        <p>Most talk about digital sovereignty is about location: data kept in an EU data centre, a supplier incorporated at home. That matters, and it is not enough. A site hosted in Dublin on a platform whose terms say you cannot take it with you is not yours, wherever the servers are.</p>
+        <p>Sovereignty is whether you can move your site, its data and its schema to anywhere else, on your own terms. Four tests decide it.</p>
+      </div>
+      <ul class="grid">
+        <li class="card">
+          <span class="num">Test 1</span>
+          <h3>Can you move it?</h3>
+          <p class="answer"><strong>Yes.</strong> Static files in your own repository, with their history, hostable anywhere, from GitHub Pages for free to any web host.</p>
+        </li>
+        <li class="card">
+          <span class="num">Test 2</span>
+          <h3>Do you own the schema?</h3>
+          <p class="answer"><strong>Yes.</strong> The structure of the site and its content are files in your repository, in open formats. An export in a format the vendor chose is access, not control.</p>
+        </li>
+        <li class="card">
+          <span class="num">Test 3</span>
+          <h3>Who sets the terms?</h3>
+          <p class="answer"><strong>You.</strong> No platform, no subscription, and open-source code that nobody can withdraw.</p>
+        </li>
+        <li class="card">
+          <span class="num">Test 4</span>
+          <h3>What if we are bought?</h3>
+          <p class="answer"><strong>Nothing changes for you.</strong> You already hold everything. A company that changes owners can change its terms and its jurisdiction with them; your repository does not.</p>
+        </li>
+      </ul>
+      <p class="small muted">Source: <a href="https://newsroom.sgit.ai/articles/sovereignty-you-can-move.html">Sovereignty you can move</a>. Sovereignty here is a set of possibilities, not a guarantee: owning the files means you can move; it does not move them for you.</p>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="tenets-title">
+    <div class="wrap">
+      <h2 id="tenets-title">The five tenets of owning a website</h2>
+      <ul class="grid">
+        <li class="card">
+          <span class="num">1</span>
+          <h3>You hold it</h3>
+          <p>Your own repository, with the full history of every change since the first. Nothing of yours stays with us.</p>
+        </li>
+        <li class="card">
+          <span class="num">2</span>
+          <h3>You control it</h3>
+          <p>No platform, no subscription, no terms but yours, on open code nobody can withdraw.</p>
+        </li>
+        <li class="card">
+          <span class="num">3</span>
+          <h3>You change it</h3>
+          <p>By talking to your own AI, with guard rails. Every change is a commit, and every change can be undone.</p>
+        </li>
+        <li class="card">
+          <span class="num">4</span>
+          <h3>You can run it anywhere</h3>
+          <p>Static files on any host, in any region. No server code, no database, no plugins, no cookies unless you add them.</p>
+        </li>
+        <li class="card">
+          <span class="num">5</span>
+          <h3>You keep it</h3>
+          <p>A site you own should not depend on us existing. If we disappear, you keep it: you already hold everything.</p>
+        </li>
+      </ul>
+      <p class="small muted">Source: <a href="https://newsroom.sgit.ai/articles/the-sovereign-website.html">The sovereign website</a> and <a href="https://newsroom.sgit.ai/articles/the-pitch.html">The pitch</a>.</p>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="leave-title">
+    <div class="wrap">
+      <h2 id="leave-title">The difference that matters most: you can leave</h2>
+      <div class="prose">
+        <p>The AI is not the difference; everyone has it now. What a platform cannot match without changing its business is that the customer can leave, with their site, whenever they want, and owe nobody anything. In the platforms' own words:</p>
+        <ul>
+          <li><strong>Wix:</strong> its help page says sites "need to be hosted and operated on Wix's servers".</li>
+          <li><strong>Squarespace:</strong> the only export is a WordPress-format file covering pages, one blog and their text and images, leaving out the store, products, audio and video blocks, other page types and the styles.</li>
+        </ul>
+        <p>None of this is hidden; it is the business model. A platform earns every month because you stay. A sovereign agentic website is files in your own repository, which you can take to any host.</p>
+      </div>
+      <p class="small muted">Source: <a href="https://newsroom.sgit.ai/articles/no-lock-in.html">No lock-in</a> and <a href="https://newsroom.sgit.ai/articles/static-against-the-platforms.html">Static against the platforms</a>. The platforms' positions are from their own pages and standard terms, read in November 2026; negotiated contracts may differ.</p>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="open-title">
+    <div class="wrap">
+      <h2 id="open-title">An open pattern, and a hosted version</h2>
+      <ul class="grid two">
+        <li class="card">
+          <h3>Use it yourself, free</h3>
+          <p>A sovereign agentic website is a pattern before it is a product. Like WordPress, anyone can use it without paying us.</p>
+          <p><a href="open.html">About the open pattern</a></p>
+        </li>
+        <li class="card">
+          <h3>Or let us host it</h3>
+          <p>The agents build it, and it is served at its own address on sovereignwebsite.site until you point your own domain at it. The hosted service is being set up; nothing is sold yet.</p>
+          <p><a href="pricing.html">About pricing</a></p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="limits-title">
+    <div class="wrap">
+      <h2 id="limits-title">What this site does not claim</h2>
+      <ul class="prose">
+        <li>The pattern's repository and the hosted service under this name are still being set up.</li>
+        <li>Prices on this site are those published for the website cell; the £50 or €50 launch offer is a proposal.</li>
+        <li>Sovereign, here, means owning your site and being able to move it. It is not a legal or certification claim.</li>
+      </ul>
+    </div>
+  </section>
 </main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="how-it-works.html">How it works</a></li>
+      <li><a href="open.html">Open pattern</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="https://github.com/SovereignWebsite">SovereignWebsite on GitHub</a></li>
+    </ul>
+    <p>sovereignwebsite.ai is static files: no cookies, no tracking, no scripts. Its words come from articles by Dinis Cruz on the <a href="https://newsroom.sgit.ai/articles/sovereign-agentic-website.html">SGit-AI newsroom</a>.</p>
+  </div>
+</footer>
 </body>
 </html>
