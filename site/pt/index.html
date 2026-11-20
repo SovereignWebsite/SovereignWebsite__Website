@@ -9,10 +9,11 @@
 <meta name="color-scheme" content="light dark">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../theme.css">
 <link rel="alternate" hreflang="en-GB" href="https://sovereignwebsite.ai/">
 <link rel="alternate" hreflang="pt-PT" href="https://sovereignwebsite.ai/pt/">
 </head>
-<body>
+<body class="d1">
 <a class="skip" href="#main">Saltar para o conteúdo</a>
 <nav class="family" aria-label="The Sovereign Website family">
   <ul>
@@ -53,18 +54,48 @@
 </header>
 
 <main id="main">
-  <section class="hero" aria-labelledby="hero-title">
+  <section class="d1-hero" aria-labelledby="hero-title">
+    <div class="wrap d1-hero-grid">
+      <div>
+        <p class="eyebrow">Sovereign Agentic Website</p>
+        <h1 id="hero-title">O seu site.<br>Construído por agentes,<br>propriedade sua.</h1>
+        <p class="lead">Diga a uma equipa de agentes o que quer. Constroem o seu site, mostram-lhe cinco designs e entregam-lho. Os ficheiros, o histórico e o endereço são seus, e pode levá-lo para onde quiser.</p>
+        <div class="actions">
+          <a class="button" href="maturity.html#self-check">Avalie o seu site, de 0 a 5</a>
+          <a class="button secondary" href="how-it-works.html">Como funciona</a>
+        </div>
+        <p class="small"><a href="../designs/index.html">Esta página inicial é o design 1 de cinco</a> (em inglês)</p>
+      </div>
+      <aside class="d1-ticket" aria-labelledby="offer-title">
+        <span class="tag">Apenas uma proposta</span>
+        <h2 id="offer-title">A oferta de lançamento</h2>
+        <p class="price">&pound;50 ou &euro;50</p>
+        <p>Proposta, não decidida: &pound;50, e &euro;50 nos sites europeus. Não está disponível hoje.</p>
+        <p class="d1-anchor"><span class="tag">Preço de referência publicado</span> &pound;500, pagamento único, sem assinatura da nossa parte.</p>
+        <p class="small"><strong>Nada foi vendido ainda.</strong> <a href="pricing.html">Todos os preços, com a sua etiqueta</a>.</p>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="get-title">
     <div class="wrap">
-      <p class="eyebrow">Sovereign Agentic Website</p>
-      <h1 id="hero-title">O seu site.<br>Construído por agentes,<br>propriedade sua.</h1>
-      <p class="lead">Uma equipa de agentes constrói o seu site a partir do que lhe diz. Tudo é seu: os ficheiros, o histórico e o endereço, num repositório que controla. Altera-o falando com a sua própria IA, e pode levá-lo para onde quiser.</p>
-      <div class="actions">
-        <a class="button" href="maturity.html#self-check">Avalie o seu site, de 0 a 5</a>
-      </div>
-      <p class="small"><a href="../designs/index.html">Veja cinco designs para esta página inicial</a></p>
-      <div class="note">
-        <p><strong>Ponto da situação.</strong> Nada foi vendido ainda, e o serviço alojado com este nome não existe ainda. Este site está a ser construído às claras, e as suas afirmações remetem para os artigos de onde vêm.</p>
-      </div>
+      <h2 id="get-title">Quatro promessas simples</h2>
+      <ol class="d1-promises">
+        <li><h3>Uma equipa constrói-o</h3><p>Uma entrevista sobre o que quer, e depois uma equipa de agentes faz cinco designs a partir das suas próprias fotografias e palavras. Escolhe um.</p></li>
+        <li><h3>É seu</h3><p>Um repositório em seu nome com todas as alterações desde a primeira e, quando tiver um, o seu domínio em seu próprio nome.</p></li>
+        <li><h3>Altera-o falando</h3><p>A sua própria IA altera o site quando lhe pede, dentro de uma política de comportamento que diz no que pode mexer. Cada alteração é um commit, verificado antes de ficar online, e pode ser desfeita.</p></li>
+        <li><h3>Pode mudá-lo de sítio</h3><p>Ficheiros simples, sem código de servidor, sem base de dados, sem cookies a não ser que os acrescente. Qualquer alojamento que sirva ficheiros o consegue pôr a funcionar.</p></li>
+      </ol>
+      <p><a href="how-it-works.html">Como funciona, passo a passo</a></p>
+    </div>
+  </section>
+
+  <section class="section d1-rent" aria-labelledby="rent-title">
+    <div class="wrap">
+      <h2 id="rent-title">Deixe de arrendar o seu site.</h2>
+      <p class="prose">Numa plataforma paga todos os meses por um site que não pode levar consigo. Quando não pode sair, o preço é o que a plataforma disser: este ano, tanto a Squarespace como a Wix aumentaram os preços. Pago uma vez, um sovereign agentic website é um repositório que guarda, no alojamento que escolher.</p>
+      <p><a href="moving.html">Mudar do Wix, Squarespace ou WordPress</a></p>
+      <p class="small muted">Fonte: <a href="https://newsroom.sgit.ai/articles/the-sovereign-website.html">The sovereign website</a> e <a href="https://newsroom.sgit.ai/articles/static-against-the-platforms.html">Static against the platforms</a> (em inglês).</p>
     </div>
   </section>
 
@@ -85,30 +116,6 @@
     </div>
   </section>
 
-  <section class="section" aria-labelledby="get-title">
-    <div class="wrap">
-      <h2 id="get-title">O que recebe</h2>
-      <ul class="grid">
-        <li class="card">
-          <h3>Uma equipa constrói-o</h3>
-          <p>Uma entrevista sobre o que quer, e depois uma equipa de agentes faz cinco designs a partir das suas próprias fotografias e palavras. Escolhe um.</p>
-        </li>
-        <li class="card">
-          <h3>É seu</h3>
-          <p>Um repositório em seu nome com todas as alterações desde a primeira e, quando tiver um, o seu domínio em seu próprio nome.</p>
-        </li>
-        <li class="card">
-          <h3>Altera-o falando</h3>
-          <p>A sua própria IA altera o site quando lhe pede, dentro de uma política de comportamento que diz no que pode mexer. Cada alteração é um commit, verificado antes de ficar online, e pode ser desfeita.</p>
-        </li>
-        <li class="card">
-          <h3>Pode mudá-lo de sítio</h3>
-          <p>Ficheiros simples, sem código de servidor, sem base de dados, sem cookies a não ser que os acrescente. Qualquer alojamento que sirva ficheiros o consegue pôr a funcionar.</p>
-        </li>
-      </ul>
-      <p><a href="how-it-works.html">Como funciona, passo a passo</a></p>
-    </div>
-  </section>
 
   <section class="section" aria-labelledby="stack-title">
     <div class="wrap">

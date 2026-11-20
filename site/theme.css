@@ -1,4 +1,4 @@
-/* Design 1, the plain promise: warm, generous, a serif headline and the offer as a ticket. */
+/* The site theme, from design 1, the plain promise, chosen by Dinis Cruz on 20 November 2026: warm, generous, a serif headline and the offer as a ticket. */
 .d1 { --bg: #fbf6ee; --surface: #fffdf9; --fg: #2a1f17; --muted: #5e5148; --accent: #a5432a; --accent-soft: #f6e3d9; --line: #eadccd; --note: #f7ecdc; }
 @media (prefers-color-scheme: dark) {
   .d1 { --bg: #1a1512; --surface: #231c18; --fg: #f1e9e1; --muted: #c2b5aa; --accent: #f0a084; --accent-soft: #3a261d; --line: #3a2f28; --note: #2b221b; }
@@ -18,3 +18,4 @@
 .d1-promises p { color: var(--muted); margin: 0; }
 .d1-rent { background: var(--note); }
 .d1-rent h2 { font-size: clamp(1.7rem, 5vw, 2.6rem); }
+.d1-hero .actions + .small { margin-top: 1rem; }

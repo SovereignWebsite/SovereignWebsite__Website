@@ -9,10 +9,11 @@
 <meta name="color-scheme" content="light dark">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="theme.css">
 <link rel="alternate" hreflang="en-GB" href="https://sovereignwebsite.ai/">
 <link rel="alternate" hreflang="pt-PT" href="https://sovereignwebsite.ai/pt/">
 </head>
-<body>
+<body class="d1">
 <a class="skip" href="#main">Skip to content</a>
 <nav class="family" aria-label="The Sovereign Website family">
   <ul>
@@ -53,18 +54,48 @@
 </header>
 
 <main id="main">
-  <section class="hero" aria-labelledby="hero-title">
+  <section class="d1-hero" aria-labelledby="hero-title">
+    <div class="wrap d1-hero-grid">
+      <div>
+        <p class="eyebrow">Sovereign Agentic Website</p>
+        <h1 id="hero-title">Your website.<br>Built by agents,<br>owned by you.</h1>
+        <p class="lead">Tell a team of agents what you want. They build your site, show you five designs, and hand it over. The files, the history and the address are yours, and you can move it anywhere.</p>
+        <div class="actions">
+          <a class="button" href="maturity.html#self-check">Check your website, from 0 to 5</a>
+          <a class="button secondary" href="how-it-works.html">How it works</a>
+        </div>
+        <p class="small"><a href="designs/index.html">This home page is design 1 of five</a></p>
+      </div>
+      <aside class="d1-ticket" aria-labelledby="offer-title">
+        <span class="tag">Proposal only</span>
+        <h2 id="offer-title">The launch offer</h2>
+        <p class="price">&pound;50 or &euro;50</p>
+        <p>Proposed, not decided: &pound;50, and &euro;50 on European sites. It is not on offer today.</p>
+        <p class="d1-anchor"><span class="tag">Published anchor</span> &pound;500, one-off, with no subscription from us.</p>
+        <p class="small"><strong>Nothing is sold yet.</strong> <a href="pricing.html">Every price, with its label</a>.</p>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="get-title">
     <div class="wrap">
-      <p class="eyebrow">Sovereign Agentic Website</p>
-      <h1 id="hero-title">Your website.<br>Built by agents,<br>owned by you.</h1>
-      <p class="lead">A team of agents builds your site from what you tell them. You own all of it: the files, the history and the address, in a repository you control. You change it by talking to your own AI, and you can move it anywhere.</p>
-      <div class="actions">
-        <a class="button" href="maturity.html#self-check">Check your website, from 0 to 5</a>
-      </div>
-      <p class="small"><a href="designs/index.html">See five designs for this home page</a></p>
-      <div class="note">
-        <p><strong>Where things stand.</strong> Nothing is sold yet, and the hosted service under this name does not exist yet. This site is being built in the open, and its claims link to the articles they come from.</p>
-      </div>
+      <h2 id="get-title">Four plain promises</h2>
+      <ol class="d1-promises">
+        <li><h3>A team builds it</h3><p>An interview about what you want, then a team of agents makes five designs from your own photos and words. You pick one.</p></li>
+        <li><h3>You own it</h3><p>A repository in your name with every change since the first, and, when you have one, your domain in your own name.</p></li>
+        <li><h3>You change it by talking</h3><p>Your own AI changes the site when you ask, inside a behaviour policy that says what it may touch. Every change is a commit, checked before it goes live, and can be undone.</p></li>
+        <li><h3>You can move it</h3><p>Plain files, no server code, no database, no cookies unless you add them. Any host that serves files can run it.</p></li>
+      </ol>
+      <p><a href="how-it-works.html">How it works, step by step</a></p>
+    </div>
+  </section>
+
+  <section class="section d1-rent" aria-labelledby="rent-title">
+    <div class="wrap">
+      <h2 id="rent-title">Stop renting your website.</h2>
+      <p class="prose">On a platform you pay every month, for a site you cannot take with you. When you cannot leave, the price is whatever the platform says: this year both Squarespace and Wix raised their prices. Paid once, a sovereign agentic website is a repository you keep, on any host you choose.</p>
+      <p><a href="moving.html">Moving from Wix, Squarespace or WordPress</a></p>
+      <p class="small muted">Source: <a href="https://newsroom.sgit.ai/articles/the-sovereign-website.html">The sovereign website</a> and <a href="https://newsroom.sgit.ai/articles/static-against-the-platforms.html">Static against the platforms</a>.</p>
     </div>
   </section>
 
@@ -85,30 +116,6 @@
     </div>
   </section>
 
-  <section class="section" aria-labelledby="get-title">
-    <div class="wrap">
-      <h2 id="get-title">What you get</h2>
-      <ul class="grid">
-        <li class="card">
-          <h3>A team builds it</h3>
-          <p>An interview about what you want, then a team of agents makes five designs from your own photos and words. You pick one.</p>
-        </li>
-        <li class="card">
-          <h3>You own it</h3>
-          <p>A repository in your name with every change since the first, and, when you have one, your domain in your own name.</p>
-        </li>
-        <li class="card">
-          <h3>You change it by talking</h3>
-          <p>Your own AI changes the site when you ask, inside a behaviour policy that says what it may touch. Every change is a commit, checked before it goes live, and can be undone.</p>
-        </li>
-        <li class="card">
-          <h3>You can move it</h3>
-          <p>Plain files, no server code, no database, no cookies unless you add them. Any host that serves files can run it.</p>
-        </li>
-      </ul>
-      <p><a href="how-it-works.html">How it works, step by step</a></p>
-    </div>
-  </section>
 
   <section class="section" aria-labelledby="stack-title">
     <div class="wrap">
