@@ -1,0 +1,89 @@
+{
+  "about": "Agent Behaviour Policy (ABP) for Sovereign Agentic Website (sovereignwebsite.ai). It says which agents may work on this site, what they may change, which branches they may push to, what needs the owner's yes, and what the pipeline checks before anything is published. Anything not listed here is not allowed. The plain-English explanation is at /policy/.",
+  "version": 1,
+  "site": "sovereignwebsite.ai",
+  "repository": "SovereignWebsite/SovereignWebsite__Website",
+  "owner": "The site's owner. Until ownership is handed over, Dinis Cruz.",
+  "source": "Dinis Cruz, 21 November 2026, 16:45 UTC, in conductor.b@SovereignWebsite.dinis's session: \"make sure that every site has an ABP policy and explanation of how it works and what it does\".",
+  "roles": {
+    "keeper": {
+      "who": "The agent the owner (until handover, Dinis) names to look after this site. Its public signing key is published before its first commit.",
+      "may_change": [
+        "site/**",
+        "docs/**",
+        "README.md"
+      ],
+      "needs_owner_yes": [
+        "site/policy/**",
+        ".github/**",
+        "site/CNAME",
+        "CLAUDE.md"
+      ],
+      "branches": [
+        "dev"
+      ],
+      "every_commit": [
+        "signed with the keeper's own published key",
+        "an Agent: trailer naming the keeper",
+        "a Claude-Session: trailer naming its session"
+      ],
+      "never": [
+        "push to main",
+        "print, commit or read a private key or token",
+        "name a private person without their consent",
+        "invent a fact, a price or a customer",
+        "add a server, cookies or tracking"
+      ]
+    },
+    "factory": {
+      "who": "SovereignWebsite__Factory's Org apply pipeline, which created this repository.",
+      "may": [
+        "create the repository and its dev branch",
+        "set Pages and the custom domain",
+        "add seed files that are missing (it never overwrites a file)",
+        "grant push to the agents' team",
+        "protect the branches"
+      ]
+    }
+  },
+  "pipelines": {
+    "pages": {
+      "file": ".github/workflows/pages.yml",
+      "runs_on": [
+        "push to dev",
+        "by hand"
+      ],
+      "github_token": {
+        "build": {
+          "contents": "read"
+        },
+        "deploy": {
+          "pages": "write",
+          "id-token": "write"
+        },
+        "tag": {
+          "contents": "write"
+        }
+      },
+      "checks_before_publishing": [
+        "link previews (Open Graph tags and the share card)",
+        "links inside the site, and links out (404 or 410 fails)",
+        "no em or en dashes",
+        "no family strip on a customer site",
+        "leak scan: no key, token or vault secret in any published file",
+        "HTML validity (html-validate)",
+        "accessibility (axe-core)"
+      ],
+      "allowed": [
+        "build the site",
+        "deploy it to GitHub Pages",
+        "tag the released commit with its version"
+      ],
+      "refused": [
+        "anything not listed above"
+      ]
+    }
+  },
+  "changes": "A change to this file or to .github/ takes effect only with the owner's yes (until handover, Dinis's), given in the keeper's own session. The commit that makes it says where that yes was given. A keeper may add rules but not remove the core ones: the site pipeline refuses a policy whose keeper.never or pages.allowed is weaker than the template's.",
+  "enforced_today": "The pipeline enforces the checks above on every push: if one fails, nothing is published. The rules for agents (paths, branches, signing, trailers) are followed by the agents and reviewed in their sessions and in the repository's history; they are not yet checked automatically on this site."
+}
