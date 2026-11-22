@@ -1,0 +1,29 @@
+name: Signers
+# Who signed each new commit on dev: a published agent key in the Factory's team/keys.json, or a person's commit
+# GitHub verified; an "Owner override:" line is listed, not refused. Seeded by SovereignWebsite__Factory, and added
+# by Org apply to sites already made (it never overwrites a file). Where pages.yml runs the same check before
+# building, a refused commit is not deployed; here it turns the run red and names the commit.
+# Dinis Cruz, 22 Nov 2026: "Yes to the sign check. Yes to the org apply to the sites already there."
+on:
+  push:
+    branches: [dev]
+permissions:
+  contents: read
+jobs:
+  signers:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Who signed the new commits
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          BEFORE: ${{ github.event.before }}
+          AFTER: ${{ github.sha }}
+        run: node .github/ci/signers.mjs "$BEFORE" "$AFTER"
