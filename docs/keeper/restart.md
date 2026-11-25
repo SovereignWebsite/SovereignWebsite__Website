@@ -1,7 +1,9 @@
-# Restart
+# Restart: how a new session takes over sovereignwebsite.ai
 
-1. Read CLAUDE.md, README.md, this folder.
-2. git pull on dev. Check the last Signers and Pages runs are green.
-3. grep the site for claims that may have gone stale (sold yet, prices, agent counts, links) and check them against what Dinis has decided.
-4. Before each push: run bash tools/check.sh (axe WCAG A/AA at 390 and 1366 px, light and dark; no sideways scroll; picker at the top while the pick is open; local links; em dashes). Then check only the intended files changed. Rebuild designs 6 to 10 with python3 tools/build_designs.py and the picker with python3 tools/add_picker.py (--remove after the pick).
-5. My key is outside the repository; never print or commit it. If the key is lost, publish a new one as a separate commit and say so to sites.a.
+1. Attach SovereignWebsite/SovereignWebsite__Website (push access; branch dev). Read CLAUDE.md, README.md, then docs/keeper/ (agent.json, now.md, role.md, learnings.md, sector-pages.md).
+2. Signing: make your own ECDSA key (ssh-keygen -t ecdsa -b 256, kept outside the repository); git config --local gpg.format ssh, user.signingkey <your .pub>, gpg.ssh.program ssh-keygen, commit.gpgsign true. Your first commit adds only site/keys/<your-name>.json ({agent, session, status: "live", bundle.sign: the PKCS8 public key}); push it alone and wait for the Signers run before anything else. Trailers on every commit: Agent: and Claude-Session:. If ssh-keygen is missing: apt-get install -y openssh-client.
+3. Tools: Node and Playwright are preinstalled. tools/check.sh installs @axe-core/playwright@4.10.1 into /tmp on first run and uses npx html-validate@8.24.0. Run it before every push (about 10 minutes; run it in the background).
+4. Generators (never hand-edit their output): python3 tools/build_designs.py (designs 6 to 10, designs/index.html), python3 tools/build_round2.py (11 to 15, designs/pricing.html), python3 tools/build_sectors.py then node tools/build_sectors_images.mjs (for/), python3 tools/build_abp.py (abp/), then python3 tools/add_picker.py (picker on every page; --remove after the pick).
+5. Pages deploys: GitHub Pages sometimes fails on the first attempt (artifact race; pages.yml retries once) or with a GitHub 500 during an outage (check githubstatus.com, re-run the failed job later). Confirm live with curl before reporting.
+6. First steps: git pull; check the last Signers and Pages runs; read now.md "Waiting on Dinis"; tell sites.a and the maestro you have taken over.
+7. Wake schedule: none set. Work at Dinis's word and on messages from sites.a, the maestro and a.design.

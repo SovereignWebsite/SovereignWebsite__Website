@@ -1,21 +1,31 @@
-# Now (25 Nov 2026)
+# Now (25 Nov 2026, 18:50 UTC): handing over to cl-4.website (account D)
 
-## Decided by Dinis (25 Nov, in my session)
-- Customers: the no-customers claims are gone (a94fc8a). Kept: "the hosted service under this name does not exist yet" and "you cannot buy anything on this site today", until Dinis answers via sites.a.
-- Price: pounds only. Promotional £50 or £500 (faf0d10). £50: submit the form, we hand over the site, you make the changes. £500: a couple of rounds back and forth, further customisation agreed. Open pattern stays free (do it yourself). Partner ladder stays on partners.html. It can change at any time.
-- Vouchers: Dinis wants to give some people a free site. Not on the site until there is a mechanism.
-- Message to focus on: sovereignty, the website you control, features, the Hub, examples of several kinds of site, more than websites (tools). Say "launching, a new service". Comparison table against other providers, with sourced and dated differences only, never "better than all".
-- Sector pages: one per kind of person (artist, professional "profile", others), each sendable by email to a non-technical person. Draft copy: docs/keeper/sector-pages.md.
-- KPI: 100 live sites. Baseline from the pipeline (https://sites.agents.sovereignweb.site/pipeline/pipeline.json, checked 2026-11-25T04:38Z): 39 live, 36 seeded, 8 building, 1 approved, 1 asked (85 listed; 6 private left out). State the date with any number; keep the count off the public site until sites.a confirms.
-- Languages: wants many European languages with regional variants. agenticcells.ai already has de, es-ES, es-MX, fr-FR, fr-CA, pt-BR, ja-JP. This site has en-GB and pt-PT. Plan after the English settles; ask for the generator.
-- Admin: every site should have an admin part for tasks and activity. The seeded sites have a public /admin/ ("How this site was made"); Kate's (https://kate-curtis-evans.founder.sovereignweb.site/admin/) has overview, activity, board (tasks in issues/), checks, design, agents. Public or in-repository tasks: asked of Dinis.
+State: everything below is pushed to dev (last commit 51a3021) and live on https://sovereignwebsite.ai/. Nothing is half-done in the working tree. No scheduled wakes.
 
-## Open
-- Euro pricing: not stated; none on the site.
-- Request page: a structured mailto for now. The sites agents' sealed request lane (sites.agents.sovereignweb.site/request/) needs a QR key Dinis issues. Dinis to choose.
-- Design: request sent to a.design (tokens and six layouts). Nothing restyled until they and sites.a have seen it.
-- Examples I may show: london.agentics-foundation.organisation, one-human-nine-agents.dinis.author, startup-grants.tool, whois.tool. Not yet: oscar.padel.sport (needs Dinis), the moving van site (owner's consent), tauguard.company, donna-freed.author.
-- Tools: Gmail and CRM tools "being built" only; GitHub tool built but in security review; say nothing is live that is not.
-- Hand-over notes from conductor.b (IaC 28416a8): not read, as I may not attach that repository; waiting for Dinis.
-- Pages: first deploy attempt sometimes fails (a race); retry added in ae78268.
-- IaC PR 5 cannot be merged (Dinis, 25 Nov, in my session). Not mine and IaC is not readable from here; passed to a.maestro.
+## Live and done today
+- Prices: £0, £50 or £500, pounds only, promotional (set by Dinis 25 Nov). pricing.html (and pt) has three tier cards and a FAQ. Home, designs and pt say £0, £50 or £500.
+- No-customers claims removed (a94fc8a).
+- Round 1 designs 6 to 10 and round 2 designs 11 to 15 at https://sovereignwebsite.ai/designs/ with one shared pricing page (designs/pricing.html). The Choose a design picker is on every page (tools/add_picker.py). The home page is still design 1 until Dinis picks.
+- Sector pages: https://sovereignwebsite.ai/for/profile.html and /for/artist.html (quiet header, no picker, own share cards).
+- ABP starter kit v2: https://sovereignwebsite.ai/abp/ and /abp/kit/ (six files from a.maestro, each matching the sha256 he sent; the hook stated as a guardrail and audit log, not a boundary).
+- Share cards: site card says £0, £50 or £500; /abp/ has its own card; home pages have share tags.
+- tools/check.sh: html-validate, share tags, axe (WCAG A and AA, 390 and 1366 px, light and dark), sideways scroll, picker, local links, em dashes. 42 pages, 0 failures at 51a3021.
+
+## Waiting on Dinis
+1. Which design becomes the home page (a.design and website.a recommend 11 Consultancy; 13 Portfolio the alternative). Then: copy it over index.html and run tools/add_picker.py --remove.
+2. Is "a repository in your name" true for paid sites? (index, designs 2, 3, 5, maturity, moving and pt pages say it; every site's repository is in the SovereignWebsite organisation today.)
+3. Does £50 include five designs? (kept out of the price promise.)
+4. May "the hosted service under this name does not exist yet" come off the site, or the sector pages?
+5. Is "you cannot buy anything on this site today" still true?
+6. Request route: Hub start page (now), mailto, or the sealed lane at sites.agents.sovereignweb.site/request/ (QR key).
+7. Next sector pages (small business, organisation, author, tools).
+8. Admin pages: public tasks, or in the repository?
+9. Vouchers: who issues, how redeemed (not on the site).
+10. May the keeper read the IaC hand-over notes (conductor.b, IaC 28416a8)?
+
+## Other open items
+- 35 older pages have no share tags (check.sh warns).
+- IaC PR 5 cannot be merged (Dinis, 25 Nov): passed to a.maestro, not ours.
+- KPI baseline (pipeline, checked 2026-11-25T04:38Z): 39 live of 85; target 100. Keep counts off the public site.
+- Examples allowed: london.agentics-foundation.organisation, one-human-nine-agents.dinis.author (http), startup-grants.tool, whois.tool. Not yet: oscar.padel.sport, the moving van site, tauguard.company, donna-freed.author.
+- The Hub (hub.sovereignweb.site) still shows the old £50 launch offer; that is the Hub's keeper's page.

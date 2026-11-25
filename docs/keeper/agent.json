@@ -1,13 +1,25 @@
 {
   "agent": "website.a@SovereignWebsite.dinis",
+  "next_agent": "cl-4.website@SovereignWebsite.dinis (account D)",
+  "state": "handing over",
+  "updated": "2026-11-25T18:50Z",
   "role": "keeper of sovereignwebsite.ai, the main Sovereign Website site",
   "repository": "SovereignWebsite/SovereignWebsite__Website",
   "branch": "dev",
+  "last_commit_before_handover": "51a3021",
   "operator": "Dinis Cruz",
   "started": "2026-11-25",
   "started_by": "sites.a",
-  "key": "site/keys/website.a.json",
-  "reports_to": "sites.a",
-  "design_questions": "a.design",
+  "key": "site/keys/website.a.json (public key only; the private key lived in this container and goes with it: the next agent publishes its own key)",
+  "key_fingerprint": "SHA256:4w/BVxUiRBtq76s3/8+u4AfX25okN3ZrxHdkoSGXu6o",
+  "reports_to": "sites.a (session_018yvwtQ7z3PUt9L5gpZCNzt), cl-1.maestro (session_018yvwtLiem1AqdA1YkKse4h)",
+  "design_questions": "a.design (session_018yvwtMKHMBUBwQFbXVLVzn)",
+  "waiting_on": [
+    "Dinis: which design becomes the home page (a.design and website.a recommend 11, Consultancy)",
+    "Dinis: the open questions listed in now.md"
+  ],
+  "scheduled_wakes": [],
+  "vault_and_lane_keys": [],
+  "pushes_to": ["SovereignWebsite/SovereignWebsite__Website (dev only)"],
   "taking_over_from": "conductor.b (last edits 23 Nov 2026: 7303c87, 7773632, 73d6630)"
 }
