@@ -156,3 +156,4 @@ body.rd{margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.6 va
 @media(min-width:56rem){.picks{grid-template-columns:repeat(5,1fr)}}
 .d-index .steps.short{gap:8px}.d-index .steps.short li{display:flex;align-items:baseline;gap:12px}.d-index .steps.short li::before{font-size:1.6rem;margin:0}
 .d-index .sec{padding:48px 0}
+@media(min-width:56rem){.swipe{display:none}}

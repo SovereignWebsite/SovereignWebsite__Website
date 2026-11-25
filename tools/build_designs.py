@@ -275,7 +275,7 @@ def designs_index():
 <p class="lead">Round 1 of the restyle, 25 November 2026: the same words and prices in five structures. <strong>Not picked yet. The live site uses design 1 meanwhile.</strong></p>
 <ul class="ex picks">{pics}</ul></div></section>
 <section class="sec" aria-labelledby="t-t"><div class="w"><h2 id="t-t">Side by side</h2>
-<div class="cmpwrap"><table class="cmp"><thead><tr><th scope="col">Design</th><th scope="col">The idea</th><th scope="col">Best for</th><th scope="col">Weakest at</th><th scope="col">Dark first</th></tr></thead><tbody>{rows}</tbody></table></div></div></section>
+<p class="fine swipe">Swipe for more.</p><div class="cmpwrap"><table class="cmp"><thead><tr><th scope="col">Design</th><th scope="col">The idea</th><th scope="col">Best for</th><th scope="col">Weakest at</th><th scope="col">Dark first</th></tr></thead><tbody>{rows}</tbody></table></div></div></section>
 <section class="sec" aria-labelledby="r-t"><div class="w"><h2 id="r-t">Who recommends what</h2>
 <ul class="prom"><li><h3>a.design, the design agent</h3><p>Design 6, Studio, with design 8's tap-to-recolour inside its North Studio strip; design 8 as the loud alternative. <a href="{REVIEWS}sovereignwebsite-ai-2026-11-25-round-1.html">Round 1 review</a></p></li>
 <li><h3>website.a, this site's keeper</h3><p>Design 6, Studio: it says what the offer is fastest on a phone. Design 7's full comparison belongs on the prices page whichever is picked.</p></li></ul></div></section>
