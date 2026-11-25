@@ -2,7 +2,8 @@
 // Code Apache-2.0, text CC BY 4.0; adapted from an open-source implementation.
 // The ABP tools (abp/tools.mjs), Node 18+, no dependencies; they reuse the hook's own decisions.
 //   node abp/tools.mjs build                      abp/<role>.md for every role, from abp/policies.json
-//   node abp/tools.mjs run-report [--line "..."]  abp/runs/<role>/<run>.json from ~/.abp/log/ and this run's commits
+//   node abp/tools.mjs run-report [--line "..."] [--include-text]  abp/runs/<role>/<run>.json from ~/.abp/log/ and this run's commits;
+//     prompts and denied targets as length and keyed hash only, unless the policy logs text and --include-text asks for it (redacted)
 //   node abp/tools.mjs report [--since ISO]       the abp agent's hourly review: runs, attempts, breaches, commits outside a grant
 import fs from 'node:fs'; import os from 'node:os'; import path from 'node:path'; import { execFileSync } from 'node:child_process'
 import { ROOT, ABP, LOG, loadPolicy, whoAmI, grantOf, checkWrite } from '../.claude/hooks/abp.mjs'
@@ -36,13 +37,13 @@ generated: by node abp/tools.mjs build; never edited by hand
 - **Writes (repository):** ${code(g.writes.map(w => w.replace(/\{role\}/g, role)))}.
 - **Writes (outside):** ${code(P.common.writes_outside_repo)} (scratch, the hook's log, memory).
 - **Sends to:** ${code(g.send)}.
-- **Pushes to:** \`${P.git?.push_branch || 'dev'}\` only; a dotted worker of this role pushes \`work/<name>\` and its work is reviewed.
+- **Pushes to:** \`${P.git?.push_branch || 'dev'}\` on \`${P.git?.remote || 'origin'}\`${P.git?.remote_url ? ` (\`${P.git.remote_url}\`)` : ''} only${g.push_remotes.length ? ', also to ' + code(g.push_remotes) : ''}; a dotted worker of this role pushes \`work/<name>\` and its work is reviewed.
 ${also.length ? `- **Also granted:** ${also.join('; ')}.\n` : ''}- **Never:** ${r.never}.
 
 ## Outside the mandate (logged; blocked when the rule's breaker is on)
 
 - Any connector (mcp__ tools) not granted above (R3); new sessions, schedules, wake-ups, environments, workflows (R4).
-- Pushing anywhere but \`${P.git?.push_branch || 'dev'}\`, force-push, deletion, tags, history rewrites, empty commits (R5).
+- Pushing anywhere but \`${P.git?.push_branch || 'dev'}\` on its remote, force-push, deletion, tags, history rewrites, empty commits (R5).
 - Writing outside the paths above, or to a protected path: ${P.common.protected.map(p => '`' + p.glob + '`' + (p.owner ? ` (${p.owner})` : '')).join(', ')} (R6).
 - Sending anything to a host not listed; GitHub writes (R7). Printing the environment or reading a key (R8). Committing under another name (R9).
 
@@ -78,16 +79,18 @@ function runReport() {
   for (const c of mine) for (const f of c.files) if (!inGrant(who, f)) breaches.push({ kind: 'write-outside-grant', what: `${c.sha} wrote ${f}`, rule: 'R6' })
   const comp = ev('compact').length, re = ev('session-start').filter(e => e.source === 'compact').length
   if (re < comp) breaches.push({ kind: 'not-re-anchored', what: `${comp} compaction(s), ${re} re-anchor(s): the policy may have been lost`, rule: 'R1' })
-  for (const e of ev('hook-error')) breaches.push({ kind: 'hook-error', what: `the hook failed open: ${e.error}`, rule: 'R2' })
+  for (const e of ev('hook-error')) breaches.push({ kind: 'hook-error', what: `the hook failed (${e.blocked ? 'closed' : 'open'}) on ${e.tool || e.mode}: ${e.error}`, rule: 'R2' })
   const run = started.replace(/:/g, '-').replace(/\.\d+/, ''), rq = ev('prompt'), inm = tools.length - att.length
+  const TX = process.argv.includes('--include-text') && P.logging?.include_text === true   // two keys: the owner's policy and this flag
+  if (process.argv.includes('--include-text') && !TX) console.error('abp run-report: the policy does not log text (logging.include_text); lengths and hashes only')
   const rep = { $schema: '../../run-report.schema.json', agent: who.agent, run, started, ended, line: arg('--line', ''), policy: { version: P.version, sha256: P._sha },
-    sessions: new Set(evs.map(e => e.s)).size, requests: rq.map(e => ({ t: e.t, chars: e.chars, sha256: e.sha, head: e.head })),
+    text_included: TX, sessions: new Set(evs.map(e => e.s)).size, requests: rq.map(e => ({ t: e.t, chars: e.chars, sha256: e.sha, ...TX && { head: e.head } })),
     session_events: ev('session-start').map(e => ({ t: e.t, source: e.source || 'unknown' })), compactions: { count: comp, re_anchored: re },
     tool_calls: { total: tools.length, by_kind: tools.reduce((o, e) => cnt(o, e.kind || e.tool), {}) },
     policies_executed: tools.reduce((o, e) => cnt(o, e.rule), {}), policies_instrumented: P.core.filter(c => c.barrier === 'hook').map(c => c.id),
     mandate: { actions: inm, commits: mine.map(c => ({ sha: c.sha, subject: c.subject.slice(0, 160), files: c.files.length })) },
     reach: { attempts: att.length, blocked: att.filter(e => e.decision === 'deny').length, observed: att.filter(e => e.decision === 'observe').length,
-      denied: att.map(e => ({ t: e.t, tool: e.tool, rule: e.rule, what: e.reason, target: e.target })) },
+      denied: att.map(e => ({ t: e.t, tool: e.tool, rule: e.rule, kind: e.kind, target_chars: e.target_chars, target_sha256: e.target_sha, ...TX && { what: e.reason, target: e.target } })) },
     breaches, counts: { requests: rq.length, tool_calls: tools.length, in_mandate: inm, out_of_mandate: att.length, attempts: att.length, breaches: breaches.length } }
   const dir = path.join(ABP, 'runs', who.role); fs.mkdirSync(dir, { recursive: true }); fs.writeFileSync(path.join(dir, `${run}.json`), JSON.stringify(rep, null, 1) + '\n')
   st[who.role] = ended; fs.mkdirSync(path.dirname(stF), { recursive: true }); fs.writeFileSync(stF, JSON.stringify(st))
@@ -119,4 +122,4 @@ function report() {
 
 const cmd = process.argv[2]
 if (cmd === 'build') build(); else if (cmd === 'run-report') runReport(); else if (cmd === 'report') report()
-else { console.error('usage: node abp/tools.mjs build | run-report [--line "..."] [--role R] | report [--since ISO]'); process.exitCode = 2 }
+else { console.error('usage: node abp/tools.mjs build | run-report [--line "..."] [--role R] [--include-text] | report [--since ISO]'); process.exitCode = 2 }

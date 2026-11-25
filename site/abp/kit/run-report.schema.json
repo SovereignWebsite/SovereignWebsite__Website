@@ -3,7 +3,7 @@
   "$comment": "Code Apache-2.0, text CC BY 4.0; adapted from an open-source implementation",
   "$id": "abp/run-report.schema.json",
   "title": "An agent's run report (abp/runs/<role>/<run>.json)",
-  "description": "Written at the end of every run by node .claude/hooks/abp.mjs run-report, from the ABP hook's log (~/.abp/log/, redacted) and the run's commits. A run without its report is a breach (core rule R10). Kept by the abp agent.",
+  "description": "Written at the end of every run by node abp/tools.mjs run-report, from the ABP hook's log (~/.abp/log/) and the run's commits. It never carries what the owner typed: prompts and tool targets are recorded as their length and a hash keyed by a per-machine salt, unless the owner opts in (policy logging.include_text and the --include-text flag), and then only redacted. A run without its report is a breach (core rule R10). Kept by the abp agent.",
   "type": "object",
   "required": ["agent", "run", "started", "ended", "policy", "requests", "tool_calls", "policies_executed", "policies_instrumented", "mandate", "reach", "breaches", "counts"],
   "properties": {
@@ -13,6 +13,7 @@
     "started": { "type": "string", "format": "date-time" },
     "ended": { "type": "string", "format": "date-time" },
     "line": { "type": "string", "description": "one sentence by the agent: what this run did" },
+    "text_included": { "type": "boolean", "description": "true only when the owner's policy logs text and the report was made with --include-text; false by default" },
     "policy": {
       "type": "object",
       "required": ["version", "sha256"],
@@ -21,11 +22,16 @@
     "sessions": { "type": "integer", "minimum": 0 },
     "requests": {
       "type": "array",
-      "description": "the prompts this run received: length, hash and a redacted head, never the full text",
+      "description": "the prompts this run received, as length and keyed hash; never the text, except a redacted head when text_included is true",
       "items": {
         "type": "object",
         "required": ["t", "chars", "sha256"],
-        "properties": { "t": { "type": "string" }, "chars": { "type": "integer" }, "sha256": { "type": "string" }, "head": { "type": "string" } }
+        "properties": {
+          "t": { "type": "string" },
+          "chars": { "type": "integer", "minimum": 0 },
+          "sha256": { "type": "string", "pattern": "^[0-9a-f]{16}$", "description": "the first 16 hex digits of HMAC-SHA-256 under the machine's salt (~/.abp/salt, never committed): it matches a prompt to the local log without revealing it" },
+          "head": { "type": "string", "maxLength": 240, "description": "only when text_included: the redacted start of the prompt" }
+        }
       }
     },
     "session_events": {
@@ -78,14 +84,24 @@
           "type": "array",
           "items": {
             "type": "object",
-            "properties": { "t": { "type": "string" }, "tool": { "type": "string" }, "rule": { "type": "string" }, "what": { "type": "string" }, "target": { "type": "string" } }
+            "required": ["t", "tool", "rule"],
+            "properties": {
+              "t": { "type": "string" },
+              "tool": { "type": "string" },
+              "rule": { "type": "string" },
+              "kind": { "type": "string", "description": "what the call was, e.g. write, git-push, send, connector, tamper, write-unidentified" },
+              "target_chars": { "type": "integer", "minimum": 0, "description": "the length of the command, path, URL or query" },
+              "target_sha256": { "type": "string", "pattern": "^[0-9a-f]{16}$", "description": "its keyed hash, as for requests" },
+              "what": { "type": "string", "maxLength": 240, "description": "only when text_included: the redacted reason, which can name the target" },
+              "target": { "type": "string", "maxLength": 240, "description": "only when text_included: the redacted target" }
+            }
           }
         }
       }
     },
     "breaches": {
       "type": "array",
-      "description": "an action outside the grant that happened (a commit outside its paths, a missed re-anchor, a hook that failed open)",
+      "description": "an action outside the grant that happened (a commit outside its paths, a missed re-anchor, a hook that failed, closed for writes or open for reads)",
       "items": {
         "type": "object",
         "required": ["kind", "what"],
