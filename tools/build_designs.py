@@ -5,6 +5,7 @@ Run from the repository root: python3 tools/build_designs.py
 Output is plain static HTML; nothing here runs on the site. Direction from a.design, 25 Nov 2026.
 Every statement must stay true: prices as on pricing.html, examples only with consent, North Studio labelled fictional.
 """
+import re
 from pathlib import Path
 
 OUT = Path(__file__).resolve().parent.parent / "site" / "designs"
@@ -64,7 +65,7 @@ def picker(current):
     <p><a href="index.html">Compare all designs</a></p>
   </div>
 </details>
-<span class="fine">Preview: design {current}, {dict((n, nm) for n, nm, _, _ in ROUND)[current]}. The live site uses design 1. <a href="index.html">All designs</a></span>
+<span class="fine">Preview: design {current}, {dict((n, nm) for n, nm, _, _ in ROUND).get(current, "")}. The live site uses design 1. <a href="index.html">All designs</a></span>
 </div></div>'''
 
 
@@ -255,12 +256,52 @@ def hubmap():
                       sec("how", "How it works", STEPS), sec("compare", "Own it, or rent it", compare(4)), HUB])
 
 
+INFO = {
+    6: ("First-time visitors who want the offer, plainly", "Calm; it may read as plain next to 8"),
+    7: ("Readers who compare before they ask, or print it", "The least visual of the five"),
+    8: ("Showing the method in one tap", "Dark and loud; not everyone's taste"),
+    9: ("The sceptical reader who wants proof of ownership", "A timeline to read before seeing a site"),
+    10: ("People who want to see other sites first", "Only four examples can be shown so far"),
+}
+REVIEWS = "https://design.agents.sovereignweb.site/factory/dinis-cruz/account-a/a.design/reviews/"
+
+
+def designs_index():
+    pics = "".join(f'<li><a href="{n}.html"><img src="thumbs/{n}-phone.jpg" width="195" height="422" alt="Phone first screen of design {n}, {name}" loading="lazy" decoding="async"><span>Design {n}, {name}</span></a></li>' for n, name, _, _ in ROUND)
+    rows = "".join(f'<tr><th scope="row"><a href="{n}.html">{n}, {name}</a></th><td>{idea}</td><td>{INFO[n][0]}</td><td>{INFO[n][1]}</td><td>{"Yes" if cls == "d-five" else "No"}</td></tr>' for n, name, idea, cls in ROUND)
+    old = "".join(f'<li><a href="{n}.html">Design {n}, {name}</a>: {line}{"" if line.endswith("?") else "."}</li>' for n, name, line in EARLIER)
+    main = f'''<section class="sec" aria-labelledby="hero-title"><div class="w">
+<p class="kicker">Choose a design</p><h1 id="hero-title">Five directions for this site</h1>
+<p class="lead">Round 1 of the restyle, 25 November 2026: the same words and prices in five structures. <strong>Not picked yet. The live site uses design 1 meanwhile.</strong></p>
+<ul class="ex picks">{pics}</ul></div></section>
+<section class="sec" aria-labelledby="t-t"><div class="w"><h2 id="t-t">Side by side</h2>
+<div class="cmpwrap"><table class="cmp"><thead><tr><th scope="col">Design</th><th scope="col">The idea</th><th scope="col">Best for</th><th scope="col">Weakest at</th><th scope="col">Dark first</th></tr></thead><tbody>{rows}</tbody></table></div></div></section>
+<section class="sec" aria-labelledby="r-t"><div class="w"><h2 id="r-t">Who recommends what</h2>
+<ul class="prom"><li><h3>a.design, the design agent</h3><p>Design 6, Studio, with design 8's tap-to-recolour inside its North Studio strip; design 8 as the loud alternative. <a href="{REVIEWS}sovereignwebsite-ai-2026-11-25-round-1.html">Round 1 review</a></p></li>
+<li><h3>website.a, this site's keeper</h3><p>Design 6, Studio: it says what the offer is fastest on a phone. Design 7's full comparison belongs on the prices page whichever is picked.</p></li></ul></div></section>
+<section class="sec" aria-labelledby="q-t"><div class="w"><h2 id="q-t">Three questions to ask of each</h2>
+<ol class="steps short"><li><h3>Does the first screen on a phone say what the site is for?</h3></li><li><h3>Can you do the main task, asking for a site, without hunting?</h3></li><li><h3>Would the owner say wow?</h3></li></ol></div></section>
+<section class="sec" aria-labelledby="o-t"><div class="w"><h2 id="o-t">Earlier designs</h2><p class="fine">The first five, from 20 November 2026. Design 1 is the live home page.</p><ul>{old}</ul></div></section>'''
+    return main
+
+
+def write_index():
+    body = page(0, "Choose a design", "d-index", designs_index())
+    body = body.replace("<title>Design 0, Choose a design</title>", "<title>Choose a design</title>")
+    body = re.sub(r'<meta name="description" content="[^"]*">', '<meta name="description" content="Five design directions for sovereignwebsite.ai, round 1 of the restyle, side by side, with who recommends what. Not picked yet; the live site uses design 1.">', body)
+    body = re.sub(r"<!-- picker:start -->.*?<!-- picker:end -->\n?", "", body, flags=re.S)
+    body = re.sub(r'<div class="pickbar">.*?</div></div>\n', "", body, count=1, flags=re.S)
+    (OUT / "index.html").write_text(body, encoding="utf-8")
+    print("wrote index")
+
+
 def main():
     builders = {6: studio, 7: brief, 8: five, 9: ownership, 10: hubmap}
     for n, name, _, cls in ROUND:
         pre = "".join(f'<input class="pickn" type="radio" name="nd" id="nd{i}" aria-label="North Studio design {i}"{" checked" if i == 4 else ""}>' for i in range(1, 6)) if cls == "d-five" else ""
         (OUT / f"{n}.html").write_text(page(n, name, cls, builders[n](), pre), encoding="utf-8")
         print("wrote", n)
+    write_index()
 
 
 if __name__ == "__main__":

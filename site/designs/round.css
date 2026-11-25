@@ -151,3 +151,8 @@ body.rd{margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.6 va
 .d-five .five .ph{text-align:left;font-size:1rem}
 .d-five .five .ph.n1{color:#111}.d-five .five .ph.n2{color:#3b2f22}.d-five .five .ph.n3{color:#fff}.d-five .five .ph.n4{color:#f3efe6}.d-five .five .ph.n5{color:#222}
 .d-five .five .ph .pt,.d-five .five .ph b{color:inherit;text-align:left}
+/* /designs/ index */
+.picks{grid-template-columns:repeat(2,1fr)}
+@media(min-width:56rem){.picks{grid-template-columns:repeat(5,1fr)}}
+.d-index .steps.short{gap:8px}.d-index .steps.short li{display:flex;align-items:baseline;gap:12px}.d-index .steps.short li::before{font-size:1.6rem;margin:0}
+.d-index .sec{padding:48px 0}
