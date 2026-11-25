@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // Code Apache-2.0, text CC BY 4.0; adapted from an open-source implementation.
-// The ABP hook for Claude Code (Node.js, tested on Node 22 and 24, no dependencies), wired by .claude/settings.json; see INSTALL.md.
+// The ABP hook for Claude Code (Node 18+, no dependencies), wired by .claude/settings.json; see INSTALL.md.
 import fs from 'node:fs'; import os from 'node:os'; import path from 'node:path'; import crypto from 'node:crypto'
 import { execFileSync } from 'node:child_process'; import { fileURLToPath } from 'node:url'
 const SELF = fileURLToPath(import.meta.url), HOME = os.homedir()

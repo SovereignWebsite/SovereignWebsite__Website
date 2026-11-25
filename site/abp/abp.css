@@ -9,3 +9,5 @@
 .prompt{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:20px;overflow-x:auto;white-space:pre-wrap;font:.95rem/1.55 ui-monospace,Menlo,Consolas,monospace;max-width:52rem}
 .abp .sec{padding:48px 0}
 .recs{padding-left:20px;max-width:46rem}.recs li{margin:0 0 16px}.recs h3{margin-bottom:4px}
+.cmp.kit code.sha{font-size:.75rem;word-break:break-all}
+.cmp.kit td,.cmp.kit th{vertical-align:top}

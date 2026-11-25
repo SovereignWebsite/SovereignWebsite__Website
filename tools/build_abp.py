@@ -3,6 +3,7 @@
 Asked for by Dinis Cruz, 25 Nov 2026 (relayed by a.maestro). Live and growing: the files are listed as they arrive.
 Run from the repository root: python3 tools/build_abp.py. True statements only; no names, keys or session links in the templates."""
 import sys
+import hashlib
 from html import escape
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -33,10 +34,12 @@ SECURITY_AGENT = """You are the security agent for this repository.
 - Never print or copy a secret you find; say where it is, and that it must be rotated."""
 
 KIT = [
-    ("policies.json template", "The core rules, deny by default, and one example agent's grant."),
-    ("Hook script and .claude/settings.json wiring", "The policy read again at SessionStart (startup, resume, clear, compact), and a PreToolUse hook in observe mode that blocks only when a rule's breaker is on."),
-    ("Run-report schema", "What every run records, so the hourly review has something to read."),
-    ("Build command", "Generates one behaviour policy per agent from the policy file."),
+    ("INSTALL.md", None, "Install guide", "The seven steps, the connectors advice and what the hooks cannot see. Start here."),
+    ("policies.template.json", "abp/policies.json", "policies.json template", "The core rules, deny by default, the R3 connectors breaker on, and example grants for an abp agent, a security agent and a dev agent."),
+    ("settings.json", ".claude/settings.json", "Hook wiring", "SessionStart (startup, resume, clear, compact), UserPromptSubmit, PreToolUse and PreCompact."),
+    ("abp-hook.mjs", ".claude/hooks/abp.mjs", "The hook", "Re-anchors each agent's ABP at every start and compaction; decides and logs every tool call, in observe mode, blocking only where a rule's breaker is on."),
+    ("abp-tools.mjs", "abp/tools.mjs", "Build and report command", "build: one ABP per agent; run-report: each run's report; report: the hourly review."),
+    ("run-report.schema.json", "abp/run-report.schema.json", "Run-report schema", "What every run records, so the hourly review has something to read."),
 ]
 LIVE = [
     ("board/abp/README.md", "How the team's policies work", GH),
@@ -94,8 +97,12 @@ def prompt_block(id_, title, text):
             f'<pre class="prompt" tabindex="0"><code>{escape(text)}</code></pre></div></section>')
 
 
+def sha_of(name):
+    return hashlib.sha256((SITE / "abp" / "kit" / name).read_bytes()).hexdigest()
+
+
 def guide():
-    kit = "".join(f'<li><h3>{t}</h3><p>{d}</p><p class="fine status">Being prepared</p></li>' for t, d in KIT)
+    kit = "".join(f'<li><h3>{t}</h3><p>{d}</p><p class="fine"><a href="kit/{f}" download>Download {f}</a></p></li>' for f, _, t, d in KIT)
     live = "".join(f'<li><a href="{base}{p}">{escape(p)}</a>: {d}</li>' for p, d, base in LIVE)
     cases = "".join(f"<li>{c}</li>" for c in CASES)
     main = f'''<main id="main">
@@ -103,14 +110,14 @@ def guide():
 <p class="kicker">Agent Behaviour Policy</p>
 <h1 id="hero-title">A starter kit for agents that keep themselves in bounds.</h1>
 <p class="lead">For a team already running Claude Code agents that wants to add two more: an agent that owns the behaviour policies, and a security agent.</p>
-<p class="note">Live and growing: the guide and the two start prompts are here now; the template files are being prepared from a team that runs them, and appear on the <a href="kit/">kit page</a> as they are ready.</p>
+<p class="note">Six files, adapted from a team that runs them: <a href="kit/">download the kit</a>, each with its SHA-256 so you can check it. Tested on Node 22 and 24, by the team that wrote it.</p>
 </div></section>
 <section class="sec" aria-labelledby="what-t"><div class="w"><h2 id="what-t">What an Agent Behaviour Policy is</h2>
 <blockquote class="src"><p>&ldquo;An Agent Behaviour Policy describes one AI agent in one deployment: everything it can do (the grant), what you actually authorised (the mandate), the gap between the two (the delta), and what really stands in the way of each thing (the barrier).&rdquo;</p>
 <footer>From <a href="{RM}agent-behaviour-policy.html">Agent Behaviour Policies</a>, RiskMandate.</footer></blockquote>
 <p>The step above it is a <a href="{RM}licence-to-operate.html">licence to operate</a>: in RiskMandate&rsquo;s words, &ldquo;a named person authorises that policy, for an interval, with conditions and their enforcers.&rdquo;</p></div></section>
 <section class="sec" aria-labelledby="kit-t"><div class="w"><h2 id="kit-t">What the kit holds</h2><ul class="kitlist">{kit}</ul>
-<p><a href="kit/">The kit page</a> lists each file as it arrives.</p></div></section>
+<p><a href="kit/">The kit page</a> lists every file with where it goes and its SHA-256. Start with INSTALL.md.</p></div></section>
 {prompt_block("p1", "Start prompt: the ABP agent", ABP_AGENT)}
 {prompt_block("p2", "Start prompt: the security agent", SECURITY_AGENT)}
 <section class="sec" id="connectors" aria-labelledby="con-t"><div class="w"><h2 id="con-t">Connectors: keep the agents away from your own accounts</h2>
@@ -134,11 +141,14 @@ def guide():
 
 
 def kitpage():
-    items = "".join(f'<li><h3>{t}</h3><p>{d}</p><p class="fine status">Being prepared</p></li>' for t, d in KIT)
+    rows = "".join(f'<tr><th scope="row"><a href="{f}" download>{f}</a></th><td>{t}</td><td>{("<code>" + dst + "</code>") if dst else "read first"}</td><td><code class="sha">{sha_of(f)}</code></td></tr>' for f, dst, t, _ in KIT)
     return f'''<main id="main"><section class="sec" aria-labelledby="hero-title"><div class="w">
 <p class="kicker">Agent Behaviour Policy starter kit</p><h1 id="hero-title">The files</h1>
-<p class="lead">Each file appears here, ready to download, as it is prepared. Until then, the <a href="../">guide</a> has the two start prompts and links to a live example.</p>
-<ul class="kitlist">{items}</ul></div></section></main>'''
+<p class="lead">Six files. Copy each to where it goes, replace the placeholders, then follow <a href="INSTALL.md">INSTALL.md</a>. The <a href="../">guide</a> has the two start prompts and a live example.</p>
+<p class="fine swipe">Swipe sideways for more.</p>
+<div class="cmpwrap"><table class="cmp kit"><thead><tr><th scope="col">File</th><th scope="col">What it is</th><th scope="col">Goes to</th><th scope="col">SHA-256</th></tr></thead><tbody>{rows}</tbody></table></div>
+<p class="fine">Check a file with <code>sha256sum &lt;file&gt;</code> (or <code>shasum -a 256</code>). Tested on Node 22 and 24, by the team that wrote it. Code under Apache-2.0, text under CC BY 4.0, adapted from the PrompTugal news site&rsquo;s repository.</p>
+</div></section></main>'''
 
 
 def write(rel, title, desc, main):

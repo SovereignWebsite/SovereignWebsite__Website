@@ -1,7 +1,7 @@
 <!-- Code Apache-2.0, text CC BY 4.0; adapted from an open-source implementation -->
 # ABP starter kit: install
 
-An Agent Behaviour Policy (ABP) for every Claude Code agent: deny by default, one grant per agent, restored into context at every start and compaction, every tool call decided and logged. Node.js (tested on Node 22 and 24), no dependencies.
+An Agent Behaviour Policy (ABP) for every Claude Code agent: deny by default, one grant per agent, restored into context at every start and compaction, every tool call decided and logged. Node 18+, no dependencies.
 
 ## 1. Copy the files into `<your-repo>`
 
