@@ -36,6 +36,8 @@ export const SITE_KEYS = 'site/keys';
 // The people whose own GitHub-verified commits may carry an assistant's Agent: trailer: {"people": ["<github login>"]}.
 export const PEOPLE = '.github/ci/people.json';
 // A named person: GitHub calls the account a User, and it is not Claude's shared signer or a bot.
+// The Factory's own App, which seeds and refreshes files in every site (Org apply); its commits carry no Agent: trailer.
+export const FACTORY_BOT = 'agenticcells-site-factory[bot]';
 export const isPerson = (p) => !!p?.login && p.type === 'User' && p.login.toLowerCase() !== 'claude' && !/\[bot\]$/i.test(p.login);
 const keyFile = (agent) => `${SITE_KEYS}/${agent.split('@')[0]}.json`;
 const AGENT = /^[a-z0-9]+(?:[.-][a-z0-9]+)*@[a-z0-9.-]+$/i;
@@ -116,8 +118,10 @@ export async function checkSigners({ cwd = process.cwd(), before, after, keys, p
         else { ok.push(`${short} ${principal}`); continue; }
       } else {
         const p = await personVerified(c);
-        if (p?.verified) { people.push(`${short} by ${p.login || 'unknown'}: ${subject}`); continue; }
-        why = 'no Agent: trailer and not a commit GitHub verified';
+        // GitHub verifies Claude's built-in signer as the shared login "claude": leaving out the Agent: trailer must not
+        // make such a commit a person's (kate-curtis-evans.b, 24 Nov 2026). Only a GitHub User or the Factory's App counts.
+        if (p?.verified && (isPerson(p) || (p.login === FACTORY_BOT && p.type === 'Bot'))) { people.push(`${short} by ${p.login}: ${subject}`); continue; }
+        why = p?.verified ? `no Agent: trailer, and GitHub verifies it as ${p.login || 'an unknown account'}, which is not a person or the Factory's App` : 'no Agent: trailer and not a commit GitHub verified';
       }
       if (override) overrides.push(`${short} (${why}); Owner override: ${override}`);
       else refused.push(`${short} ${subject}: ${why}`);
