@@ -42,8 +42,9 @@ def picker(current):
     def item(n, name, line, now):
         cur = ' aria-current="page"' if now else ""
         here = '<span class="pk-now">You are here</span>' if now else ""
-        return (f'<li><a href="{n}.html"{cur}><img src="thumbs/{n}.jpg" width="160" height="100" alt="" loading="lazy" decoding="async">'
-                f'<strong>Design {n}, {name}</strong><span>{line}</span>{here}</a></li>')
+        live = ' <span class="pk-tag">Live</span>' if n == 1 else ""
+        return (f'<li><a href="{n}.html"{cur}><img src="thumbs/{n}-phone.jpg" width="195" height="422" alt="" loading="lazy" decoding="async">'
+                f'<strong>Design {n}, {name}{live}</strong><span>{line}</span>{here}</a></li>')
     cur_items = "\n".join(item(n, name, line, n == current) for n, name, line, _ in ROUND)
     old_items = "\n".join(item(n, name, line, n == current) for n, name, line in EARLIER)
     return f'''<div class="pickbar"><div class="w">
@@ -60,9 +61,10 @@ def picker(current):
 {old_items}
       </ul>
     </details>
+    <p><a href="index.html">Compare all designs</a></p>
   </div>
 </details>
-<span class="fine">Design {current} of round 1, a proposal: not yet the home page.</span>
+<span class="fine">Preview: design {current}, {dict((n, nm) for n, nm, _, _ in ROUND)[current]}. The live site uses design 1. <a href="index.html">All designs</a></span>
 </div></div>'''
 
 
@@ -71,7 +73,7 @@ def header():
     nav = "".join(f'<li><a href="{u}">{t}</a></li>' for u, t in NAV)
     return f'''<nav class="fam" aria-label="The Sovereign Website family"><div class="w"><ul>{fam}</ul></div></nav>
 <header class="hd"><div class="w">
-  <a class="brand" href="../index.html">{LOGO}Sovereign Website</a>
+  <a class="brand" href="../index.html">{LOGO}<span class="bt">Sovereign Website</span></a>
   <nav class="nav" aria-label="Main"><ul>{nav}</ul></nav>
   <details class="menu"><summary>Menu</summary><div class="mpanel">
     <ul>{nav}<li><a href="../open.html">Open pattern</a></li><li><a href="../pt/index.html" lang="pt-PT">Português</a></li></ul>
@@ -85,8 +87,8 @@ def strip():
     cards = [("n1", "Editorial", "Architecture for modern living."), ("n2", "Warm", "Architecture for contemporary life."),
              ("n3", "Bold", "Architecture for contemporary life."), ("n4", "Immersive", "Architecture for contemporary life."),
              ("n5", "Minimal", "Architecture for contemporary life.")]
-    figs = "".join(f'<figure><div class="ph {c}" aria-hidden="true"><b>NORTH STUDIO</b><p>{p}</p><i></i></div><figcaption>{n}</figcaption></figure>' for c, n, p in cards)
-    return f'''<div><div class="ns" role="group" aria-label="North Studio, a fictional architecture studio, in five designs">{figs}</div>
+    figs = "".join(f'<figure><div class="ph {c}" aria-hidden="true"><b>NORTH STUDIO</b><p>{p}</p><svg width="100" height="60" viewBox="0 0 100 60" aria-hidden="true" focusable="false"><rect x="2" y="16" width="96" height="6" fill="currentColor" opacity=".7"/><rect x="10" y="22" width="66" height="32" fill="currentColor" opacity=".22"/><rect x="38" y="30" width="30" height="24" fill="currentColor" opacity=".5"/><rect x="0" y="54" width="100" height="4" fill="currentColor" opacity=".35"/></svg></div><figcaption>{n}</figcaption></figure>' for c, n, p in cards)
+    return f'''<div><div class="ns" tabindex="0" role="region" aria-label="Five designs for North Studio, a fictional studio">{figs}</div>
 <p class="nscap">North Studio is a fictional architecture studio, made to show the five designs.</p></div>'''
 
 
@@ -222,10 +224,10 @@ def five():
     cards = [("nd1", "n1", "Editorial", "Architecture for modern living."), ("nd2", "n2", "Warm", "Architecture for contemporary life."),
              ("nd3", "n3", "Bold", "Architecture for contemporary life."), ("nd4", "n4", "Immersive", "Architecture for contemporary life."),
              ("nd5", "n5", "Minimal", "Architecture for contemporary life.")]
-    labels = "".join(f'<label for="{i}"><div class="ph {c}"><b>NORTH STUDIO</b><p>{p}</p><i></i></div><span>{n}</span></label>' for i, c, n, p in cards)
+    labels = "".join(f'<label for="{i}"><div class="ph {c}"><b>NORTH STUDIO</b><p>{p}</p><svg width="100" height="60" viewBox="0 0 100 60" aria-hidden="true" focusable="false"><rect x="2" y="16" width="96" height="6" fill="currentColor" opacity=".7"/><rect x="10" y="22" width="66" height="32" fill="currentColor" opacity=".22"/><rect x="38" y="30" width="30" height="24" fill="currentColor" opacity=".5"/><rect x="0" y="54" width="100" height="4" fill="currentColor" opacity=".35"/></svg></div><span>{n}</span></label>' for i, c, n, p in cards)
     hero = f'''<section class="sec" aria-labelledby="hero-title"><div class="w">{HERO_WORDS}{HERO_LINE}{HERO_ACTS}
 <div id="five"><p class="fine">Tap a design: the page below takes its colours. North Studio is a fictional architecture studio, made to show the five designs.</p>
-<div class="five" role="group" aria-label="North Studio in five designs">{labels}</div></div></div></section>'''
+<div class="five" tabindex="0" role="region" aria-label="Five designs for North Studio, a fictional studio">{labels}</div></div></div></section>'''
     return "\n".join([hero, sec("prices", "Two prices, paid once", PRICES), sec("promises", "Four plain promises", PROMISES),
                       sec("how", "How it works", STEPS), sec("examples", "Sites like these", EXAMPLES), HUB, sec("compare", "Own it, or rent it", compare(4))])
 
@@ -236,10 +238,10 @@ def ownership():
 <li><h3>We build it</h3><p>A team of agents builds the site. Every change is a commit in the site's own repository.</p><span class="proof">Proof: the history, one commit per change</span></li>
 <li><h3>It is handed over</h3><p>You get the site: plain files and their whole history.</p><span class="proof">Proof: the files, which you can copy</span></li>
 <li><h3>You change it</h3><p>Your own AI changes it when you ask, inside a behaviour policy. Every change can be undone.</p><span class="proof">Proof: your change, in the same history</span></li>
-<li><h3>You can move it</h3><p>Any host that serves files can run it. Moving these sites to a second host has not yet been shown; when it is, the proof goes here.</p><span class="proof">Proof: plain files, no server code</span></li>
+<li><h3>You move it anywhere</h3><p>Any host that serves files can run it. Moving these sites to a second host has not yet been shown; when it is, the proof goes here.</p><span class="proof">Proof: plain files, no server code</span></li>
 </ol>'''
-    hero = f'<section class="sec" aria-labelledby="hero-title"><div class="w hero-grid"><div>{HERO_WORDS}{HERO_LINE}{HERO_ACTS}</div><div id="five">{strip()}</div></div></section>'
-    return "\n".join([hero, sec("hold", "What you hold, step by step", tl), sec("prices", "Two prices, paid once", PRICES),
+    hero = f'<section class="sec" aria-labelledby="hero-title"><div class="w">{HERO_WORDS}<p class="lead">What you hold, from the day you ask to the day you move it, each step with its proof.</p><div class="acts"><a class="btn" href="{REQUEST}">Request a website</a></div>{tl}</div></section>'
+    return "\n".join([hero, sec("prices", "Two prices, paid once", PRICES), sec("five", "Five designs for one brief", strip()),
                       sec("compare", "Own it, or rent it", compare(4)), sec("examples", "Sites like these", EXAMPLES), HUB])
 
 

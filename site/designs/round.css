@@ -139,3 +139,11 @@ body.rd{margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.6 va
 @media(max-width:30rem){.pickbar .fine{display:none}}
 @media(max-width:30rem){.brand{font-size:.95rem;gap:6px}.hd .w{gap:8px}.menu summary{padding:0 10px}.hd .btn{padding:0 12px}}
 @media(max-width:23.5rem){.brand{font-size:.85rem}.brand svg{width:20px;height:20px}.menu summary{padding:0 8px}.hd .btn{padding:0 10px}}
+/* round 1 review fixes (a.design, 25 Nov) */
+.ns:focus-visible,.five:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
+.ns .ph svg,.d-five .five .ph svg{display:block;margin-top:auto;width:100%;height:auto}
+@media(max-width:22.49rem){.bt{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}}
+.pk-panel{max-height:80vh;overflow:auto}
+.pick-design .pk-panel ul{grid-template-columns:repeat(2,1fr)}
+@media(min-width:56rem){.pick-design .pk-panel>ul{grid-template-columns:repeat(5,1fr)}}
+.pick-design .pk-panel img{aspect-ratio:195/422;object-fit:cover}
