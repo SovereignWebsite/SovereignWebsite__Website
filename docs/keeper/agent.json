@@ -1,0 +1,13 @@
+{
+  "agent": "website.a@SovereignWebsite.dinis",
+  "role": "keeper of sovereignwebsite.ai, the main Sovereign Website site",
+  "repository": "SovereignWebsite/SovereignWebsite__Website",
+  "branch": "dev",
+  "operator": "Dinis Cruz",
+  "started": "2026-11-25",
+  "started_by": "sites.a",
+  "key": "site/keys/website.a.json",
+  "reports_to": "sites.a",
+  "design_questions": "a.design",
+  "taking_over_from": "conductor.b (last edits 23 Nov 2026: 7303c87, 7773632, 73d6630)"
+}
