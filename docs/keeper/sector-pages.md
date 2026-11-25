@@ -5,7 +5,7 @@ Rules: only true statements, no customer named or counted, a consented example o
 ## Template (one page per sector, at site/for/<sector>.html when the design is agreed)
 1. Headline: what the page is for this person, in their words.
 2. One line: who builds it and what they keep.
-3. Three things you get (files and history yours, you choose where it runs, five designs).
+3. Three things you get (the files and their history, the choice of where it runs, plain files you can move). Do not put "five designs" or "in your name" in the price promise until Dinis confirms them for that tier and the hand-over is real.
 4. What we need from you (a short list: your words, photos, links, which things you like).
 5. The price, as on pricing.html, with the status label.
 6. Example: only a consented one.
@@ -31,7 +31,7 @@ Note: no example yet.
 
 ## Organisation or community group
 Headline: A home for your group that you control.
-Line: Chapters, events, people and news in plain files, in a repository in your name.
+Line: Chapters, events, people and news in plain files, in its own repository with its full history. (Say "a repository you can take with you" only where hand-over to the owner's own account is real for that offer.)
 Needs: who you are, what you run, who may be named.
 Example (consented): london.agentics-foundation.organisation (check the address and wording before use).
 
@@ -44,3 +44,7 @@ Example: one-human-nine-agents.dinis.author (Dinis's own book; the address is ht
 Headline: Show what your tool does.
 Line: A small site per tool, with a live demo where it exists.
 Examples: startup-grants.tool, whois.tool. Say "being built" for the Gmail and CRM tools, never "live".
+
+## Accuracy checks before any page is built
+- Every "yours" or "in your name" claim must match what happens at hand-over. Today every site's repository is in the SovereignWebsite organisation (sites.a, 25 Nov). Existing site text that says "a repository in your name": index.html, designs 2, 3 and 5, maturity.html, moving.html and the pt pages. Asked of sites.a and Dinis; not changed yet.
+- "Five designs" in the £50 and £500 promise on pricing.html predates my edits (it was in the launch offer). Dinis to confirm it belongs to the £50 tier.
