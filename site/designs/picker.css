@@ -1,0 +1,31 @@
+/* Copied from the "Choose a design" standard as used on london.agentics-foundation.organisation.sovereignweb.site (same organisation), 25 Nov 2026. */
+/* "Choose a design": the same picker on every page and every design. CSS only (details/summary), no script.
+   Its own neutral colours, so it reads the same whatever design is showing. */
+.pick-design{--pk-bg:#fff;--pk-fg:#16171a;--pk-muted:#555a63;--pk-line:#d9dce2;--pk-hi:#2f55d4;
+  order:9;font:15px/1.45 system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--pk-fg)}
+@media (prefers-color-scheme:dark){.pick-design{--pk-bg:#17191e;--pk-fg:#eef0f4;--pk-muted:#a9afbb;--pk-line:#30343d;--pk-hi:#8fa7ff}}
+.pick-design summary{display:inline-flex;align-items:center;gap:.4rem;min-height:2rem;padding:.3rem .8rem;border-radius:999px;cursor:pointer;list-style:none;
+  background:var(--pk-bg);color:var(--pk-fg);border:1px solid var(--pk-line);font-weight:600;font-size:.88rem}
+.pick-design summary::-webkit-details-marker{display:none}
+.pick-design summary::before{content:"";width:.9rem;height:.9rem;border-radius:3px;background:conic-gradient(#e0573a 0 25%,#c8f560 0 50%,#5ee1d0 0 75%,#3b4cff 0)}
+.pick-design summary::after{content:"\25BE";font-size:.8em}
+.pick-design[open] summary::after{content:"\25B4"}
+.pick-design summary:hover,.pick-design summary:focus-visible{border-color:var(--pk-hi)}
+.pick-design[open]{flex-basis:100%;grid-column:1/-1;width:100%}
+.pk-panel{margin-top:.8rem;padding:1rem;border-radius:.9rem;background:var(--pk-bg);border:1px solid var(--pk-line);box-shadow:0 18px 40px -24px rgba(0,0,0,.45)}
+.pk-intro{margin:0 0 .9rem;color:var(--pk-muted);font-size:.9rem}.pk-intro a{color:var(--pk-hi)}
+.pk-panel ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(12.5rem,1fr));gap:.8rem}
+.pk-panel li a{display:flex;flex-direction:column;gap:.15rem;height:100%;padding:.5rem .5rem .7rem;border-radius:.7rem;border:2px solid transparent;color:var(--pk-fg);text-decoration:none}
+.pk-panel li a:hover,.pk-panel li a:focus-visible{border-color:var(--pk-line)}
+.pk-panel li a[aria-current]{border-color:var(--pk-hi)}
+.pk-panel img{display:block;width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;object-position:top;border-radius:.45rem;border:1px solid var(--pk-line);margin-bottom:.4rem}
+.pk-panel strong{font-size:.92rem}.pk-panel span{font-size:.82rem;color:var(--pk-muted)}
+.pk-panel .pk-tag{display:inline-block;margin-left:.3rem;padding:0 .4rem;border-radius:999px;background:var(--pk-hi);color:var(--pk-bg);font-size:.7rem;font-weight:700;vertical-align:middle}
+.pk-panel .pk-now{color:var(--pk-hi);font-weight:700}
+@media print{.pick-design{display:none}}
+/* round 5: five featured designs, the rest folded under "Earlier rounds" */
+.pk-old{margin-top:1rem;border-top:1px solid var(--pk-line);padding-top:.7rem}
+.pk-old>summary{cursor:pointer;font-weight:600;font-size:.88rem;color:var(--pk-muted);list-style:none}
+.pk-old>summary::-webkit-details-marker{display:none}
+.pk-old>summary::after{content:" \25BE"}.pk-old[open]>summary::after{content:" \25B4"}
+.pk-old ul{margin-top:.8rem;grid-template-columns:repeat(auto-fill,minmax(10rem,1fr))}
