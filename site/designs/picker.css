@@ -29,3 +29,13 @@
 .pk-old>summary::-webkit-details-marker{display:none}
 .pk-old>summary::after{content:" \25BE"}.pk-old[open]>summary::after{content:" \25B4"}
 .pk-old ul{margin-top:.8rem;grid-template-columns:repeat(auto-fill,minmax(10rem,1fr))}
+/* sovereignwebsite.ai: the strip that holds the picker on every page, and phone first screens two per row */
+.pickbar-top{display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:8px 16px;border-bottom:1px solid rgba(127,127,127,.25);font:14px/1.4 system-ui,-apple-system,"Segoe UI",sans-serif}
+.pk-line{color:#555a63}.pk-line a{color:#2f55d4}
+@media (prefers-color-scheme:dark){.pk-line{color:#a9afbb}.pk-line a{color:#8fa7ff}}
+@media(max-width:30rem){.pk-line{display:none}}
+.pk-panel{max-height:80vh;overflow:auto}
+.pick-design .pk-panel ul{grid-template-columns:repeat(2,1fr)}
+@media(min-width:56rem){.pick-design .pk-panel>ul{grid-template-columns:repeat(5,1fr)}}
+.pick-design .pk-panel img{aspect-ratio:195/422;object-fit:cover}
+@media print{.pickbar-top{display:none}}
