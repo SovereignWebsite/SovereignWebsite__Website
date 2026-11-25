@@ -32,6 +32,11 @@ SECTORS = {
     ),
 }
 
+WAVE = lambda c: f'<i><svg width="100" height="56" viewBox="0 0 100 56" aria-hidden="true"><rect width="100" height="56" fill="{c}" opacity=".18"/><path d="M0 34 Q15 22 30 34 T60 34 T90 34 T120 34 V56 H0Z" fill="{c}" opacity=".55"/><path d="M0 42 Q15 32 30 42 T60 42 T90 42 T120 42 V56 H0Z" fill="{c}" opacity=".85"/></svg></i>'
+BRUSH = lambda c: f'<i><svg width="100" height="56" viewBox="0 0 100 56" aria-hidden="true"><rect width="100" height="56" fill="{c}" opacity=".12"/><path d="M8 40 C30 10, 55 50, 92 16" stroke="{c}" stroke-width="9" stroke-linecap="round" fill="none" opacity=".7"/><circle cx="70" cy="40" r="7" fill="{c}" opacity=".5"/></svg></i>'
+LINES = '<i><svg width="100" height="56" viewBox="0 0 100 56" aria-hidden="true"><rect x="10" y="12" width="60" height="6" rx="3" fill="currentColor" opacity=".45"/><rect x="10" y="26" width="80" height="5" rx="2.5" fill="currentColor" opacity=".25"/><rect x="10" y="37" width="70" height="5" rx="2.5" fill="currentColor" opacity=".25"/></svg></i>'
+TILES = {"artist": WAVE("#1D4ED8") + BRUSH("#B4532A") + BRUSH("#1D4ED8") + WAVE("#2F7D6D"), "profile": LINES * 4}
+
 GET = '''<ul class="prom">
   <li><h3>Built for you</h3><p>A team of agents builds your site from your own words and photos.</p></li>
   <li><h3>Yours to keep</h3><p>The files and every change since the first, which you can copy and move to any host that serves files.</p></li>
@@ -39,14 +44,15 @@ GET = '''<ul class="prom">
 </ul>'''
 
 
-def sample(name, role, nav, blurb):
+def sample(name, role, nav, blurb, kind="profile"):
+    tiles = TILES[kind]
     links = "".join(f"<span>{n}</span>" for n in nav)
     return f'''<figure class="sample"><div class="phone" aria-hidden="true">
 <div class="s-top"><b>{name}</b><div class="s-nav">{links}</div></div>
 <div class="s-hero"><svg width="64" height="64" viewBox="0 0 64 64"><circle cx="32" cy="32" r="32" fill="currentColor" opacity=".18"/><circle cx="32" cy="25" r="11" fill="currentColor" opacity=".45"/><rect x="14" y="40" width="36" height="18" rx="9" fill="currentColor" opacity=".45"/></svg>
 <p class="s-name">{name}</p><p class="s-role">{role}</p></div>
 <p class="s-blurb">{blurb}</p>
-<div class="s-grid"><i></i><i></i><i></i><i></i></div>
+<div class="s-grid">{tiles}</div>
 </div><figcaption>A fictional example: {name} is not a real person.</figcaption></figure>'''
 
 
@@ -55,21 +61,21 @@ def page(kind, d):
     img = f"{BASE}og-{kind}.png"
     title = f"{d['title']}: Sovereign Website"
     body = f'''<a class="skip" href="#main">Skip to content</a>
-{header()}
+<header class="hd quiet"><div class="w"><a class="brand" href="../index.html">{LOGO}<span>Sovereign Website</span></a></div></header>
 <main id="main">
 <section class="sec sector" aria-labelledby="hero-title"><div class="w sgrid">
 <div><p class="kicker">{d['kicker']}</p><h1 id="hero-title">{d['h1']}</h1>
 <p class="lead">{d['line']}</p>
 <p class="priceline"><strong>&pound;50 or &pound;500</strong>, promotional, paid once. &pound;50: we build it and hand it over as it is. &pound;500: a couple of rounds of changes with you first. <a href="../pricing.html">Prices</a></p>
-<div class="acts"><a class="btn" href="{REQUEST}">Yes, I would like one</a></div></div>
-{sample(*d['sample'])}
+<div class="acts"><a class="btn" href="{REQUEST}">Yes, I would like one</a></div><p class="fine">Opens the Hub, where you ask in a few lines.</p></div>
+{sample(*d['sample'], kind=kind)}
 </div></section>
 <section class="sec" aria-labelledby="get-t"><div class="w"><h2 id="get-t">What you get</h2>{GET}
 <p class="fine">What we need from you: {d['needs']}</p></div></section>
 <section class="sec" aria-labelledby="how-t"><div class="w"><h2 id="how-t">How it works</h2>
 <ol class="steps short"><li><h3>Tell us about you</h3></li><li><h3>We build it</h3></li><li><h3>It is handed over, and you can change it yourself</h3></li></ol>
 <div class="acts"><a class="btn" href="{REQUEST}">Yes, I would like one</a></div>
-<p class="fine">Questions? Ask on the <a href="{REQUEST}">Hub's start page</a>, or read <a href="../how-it-works.html">how it works</a>.</p></div></section>
+<p class="fine">The button opens the Hub, where you ask in a few lines. Questions? Read <a href="../how-it-works.html">how it works</a>.</p></div></section>
 </main>
 <footer class="ft ft-short"><div class="w">
 <p><a href="../index.html">Sovereign Website</a> &middot; <a href="../how-it-works.html">How it works</a> &middot; <a href="../pricing.html">Prices</a> &middot; <a href="../examples.html">Examples</a> &middot; <a href="https://hub.sovereignweb.site/">Hub</a> &middot; <a href="../trust.html">Trust</a></p>

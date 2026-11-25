@@ -26,3 +26,6 @@ body.rd .sec{padding:40px 0}
 .ft-short{padding:28px 0}
 .ft-short p{margin:6px 0}
 .phone{height:400px}
+.hd.quiet .w{min-height:56px}
+.s-grid i{height:auto;background:none;color:var(--muted)}
+.s-grid svg{display:block;width:100%;height:auto;border-radius:6px}

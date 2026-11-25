@@ -43,6 +43,8 @@ for f in sorted(SITE.rglob("*.html")):
     rel = f.relative_to(SITE)
     if rel.parts[0] == "designs" and rel.stem in {str(n) for n, *_ in ROUND}:
         continue
+    if rel.parts[0] == "for":  # sector pages are emailed links, not part of the pick (a.design, 25 Nov)
+        continue
     s = f.read_text(encoding="utf-8")
     s = re.sub(r"<!-- picker:start -->.*?<!-- picker:end -->\n?", "", s, flags=re.S)
     prefix = "../" * (len(rel.parts) - 1)
