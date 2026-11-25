@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agent Behaviour Policy starter kit: Sovereign Website</title>
+<meta name="description" content="A starter kit for a team of Claude Code agents: add an agent that owns the behaviour policies, and a security agent.">
+<meta name="author" content="Dinis Cruz">
+<meta name="color-scheme" content="light dark">
+<meta property="og:title" content="Agent Behaviour Policy starter kit: Sovereign Website">
+<meta property="og:description" content="A starter kit for a team of Claude Code agents: add an agent that owns the behaviour policies, and a security agent.">
+<meta property="og:url" content="https://sovereignwebsite.ai/abp/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Sovereign Website">
+<meta property="og:locale" content="en_GB">
+<meta property="og:image" content="https://sovereignwebsite.ai/assets/share/card-1200x630.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Sovereign Website: your website, built by agents, owned by you.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Agent Behaviour Policy starter kit: Sovereign Website">
+<meta name="twitter:description" content="A starter kit for a team of Claude Code agents: add an agent that owns the behaviour policies, and a security agent.">
+<meta name="twitter:image" content="https://sovereignwebsite.ai/assets/share/card-1200x630.jpg">
+<link rel="canonical" href="https://sovereignwebsite.ai/abp/">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../designs/round.css">
+<link rel="stylesheet" href="../abp/abp.css">
+</head>
+<body class="rd abp">
+<a class="skip" href="#main">Skip to content</a>
+<nav class="fam" aria-label="The Sovereign Website family"><div class="w"><ul><li><a href="https://sovereignwebsite.ai/">Sovereign Website</a></li><li><a href="https://sovereignwebsite.org/">Principles</a></li><li><a href="https://sovereignwebsite.site/">Hosted</a></li><li><a href="https://hub.sovereignweb.site/">Hub</a></li><li><a href="https://vault.sovereignwebsite.site/">Vault</a></li><li><a href="https://agenticcells.ai/">AgentiCCells</a></li><li><a href="https://riskmandate.ai/">RiskMandate</a></li><li><a href="https://newsroom.sgit.ai/">Newsroom</a></li></ul></div></nav>
+<header class="hd"><div class="w">
+  <a class="brand" href="../index.html"><svg viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect x="2" y="2" width="28" height="28" rx="7" fill="none" stroke="currentColor" stroke-width="2.5"/><path d="M10 16.5l4 4 8-9" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="bt">Sovereign Website</span></a>
+  <nav class="nav" aria-label="Main"><ul><li><a href="../how-it-works.html">How it works</a></li><li><a href="../examples.html">Examples</a></li><li><a href="../pricing.html">Prices</a></li><li><a href="https://hub.sovereignweb.site/">Hub</a></li></ul></nav>
+  <details class="menu"><summary>Menu</summary><div class="mpanel">
+    <ul><li><a href="../how-it-works.html">How it works</a></li><li><a href="../examples.html">Examples</a></li><li><a href="../pricing.html">Prices</a></li><li><a href="https://hub.sovereignweb.site/">Hub</a></li><li><a href="../open.html">Open pattern</a></li><li><a href="../pt/index.html" lang="pt-PT">Português</a></li></ul>
+    <p class="fine">The family</p><ul><li><a href="https://sovereignwebsite.ai/">Sovereign Website</a></li><li><a href="https://sovereignwebsite.org/">Principles</a></li><li><a href="https://sovereignwebsite.site/">Hosted</a></li><li><a href="https://hub.sovereignweb.site/">Hub</a></li><li><a href="https://vault.sovereignwebsite.site/">Vault</a></li><li><a href="https://agenticcells.ai/">AgentiCCells</a></li><li><a href="https://riskmandate.ai/">RiskMandate</a></li><li><a href="https://newsroom.sgit.ai/">Newsroom</a></li></ul>
+  </div></details>
+  <a class="btn" href="https://hub.sovereignweb.site/start/"><span>Request<span class="vh-phone">&nbsp;a website</span></span></a>
+</div></header>
+<main id="main">
+<section class="sec" aria-labelledby="hero-title"><div class="w">
+<p class="kicker">Agent Behaviour Policy</p>
+<h1 id="hero-title">A starter kit for agents that keep themselves in bounds.</h1>
+<p class="lead">For a team already running Claude Code agents that wants to add two more: an agent that owns the behaviour policies, and a security agent.</p>
+<p class="note">Live and growing: the guide and the two start prompts are here now; the template files are being prepared from a team that runs them, and appear on the <a href="kit/">kit page</a> as they are ready.</p>
+</div></section>
+<section class="sec" aria-labelledby="what-t"><div class="w"><h2 id="what-t">What an Agent Behaviour Policy is</h2>
+<blockquote class="src"><p>&ldquo;An Agent Behaviour Policy describes one AI agent in one deployment: everything it can do (the grant), what you actually authorised (the mandate), the gap between the two (the delta), and what really stands in the way of each thing (the barrier).&rdquo;</p>
+<footer>From <a href="https://riskmandate.ai/agent-behaviour-policy.html">Agent Behaviour Policies</a>, RiskMandate.</footer></blockquote>
+<p>The step above it is a <a href="https://riskmandate.ai/licence-to-operate.html">licence to operate</a>: in RiskMandate&rsquo;s words, &ldquo;a named person authorises that policy, for an interval, with conditions and their enforcers.&rdquo;</p></div></section>
+<section class="sec" aria-labelledby="kit-t"><div class="w"><h2 id="kit-t">What the kit holds</h2><ul class="kitlist"><li><h3>policies.json template</h3><p>The core rules, deny by default, and one example agent's grant.</p><p class="fine status">Being prepared</p></li><li><h3>Hook script and .claude/settings.json wiring</h3><p>The policy read again at SessionStart (startup, resume, clear, compact), and a PreToolUse hook in observe mode that blocks only when a rule's breaker is on.</p><p class="fine status">Being prepared</p></li><li><h3>Run-report schema</h3><p>What every run records, so the hourly review has something to read.</p><p class="fine status">Being prepared</p></li><li><h3>Build command</h3><p>Generates one behaviour policy per agent from the policy file.</p><p class="fine status">Being prepared</p></li></ul>
+<p><a href="kit/">The kit page</a> lists each file as it arrives.</p></div></section>
+<section class="sec" aria-labelledby="p1-t"><div class="w"><h2 id="p1-t">Start prompt: the ABP agent</h2><p class="fine">Ready to paste as the start of the agent's session. Adjust the paths to your repository.</p><pre class="prompt" tabindex="0"><code>You are the ABP agent for this repository. You own the agent behaviour policies and the hooks that enforce them.
+
+- The policies live in one file in this repository. Every agent gets the core rules; anything not granted to an agent is denied.
+- Keep the hooks wired: the policy is read again at the start of every session (startup, resume, clear and compact), and every tool call is checked before it runs. Run in observe mode: record what happens, and block only where a rule&#x27;s breaker is on.
+- Generate one behaviour policy per agent from the policy file, and keep them current.
+- After each run, write a run report in the agreed schema.
+- Every hour, review the run reports and tighten any grant that allowed more than the work needed.
+- When a rule seems too tight, write a proposal for the owner, with the evidence. Never relax a policy yourself.
+- Never print, store or commit a key, a token or private data.</code></pre></div></section>
+<section class="sec" aria-labelledby="p2-t"><div class="w"><h2 id="p2-t">Start prompt: the security agent</h2><p class="fine">Ready to paste as the start of the agent's session. Adjust the paths to your repository.</p><pre class="prompt" tabindex="0"><code>You are the security agent for this repository.
+
+- Before work starts, review the plan for risk. After it is done, review the result.
+- Review every commit for keys, tokens, contact details and private data.
+- When you find a problem, raise a hold on that work and say why, with the evidence.
+- Never fix another agent&#x27;s paths yourself: report to the agent that owns them.
+- Never lift a hold yourself: the owner does.
+- Never print or copy a secret you find; say where it is, and that it must be rotated.</code></pre></div></section>
+<section class="sec" id="connectors" aria-labelledby="con-t"><div class="w"><h2 id="con-t">Connectors: keep the agents away from your own accounts</h2>
+<p>If you use Claude with connectors such as Gmail, Google Drive or Slack, those connectors belong to your claude.ai account. On Claude Code on the web, the account&rsquo;s connectors are read when a cloud session starts, so agents started on your account can reach your mail, files and messages. Tool permissions for each connector are set for the whole account, at <a href="https://claude.ai/customize/connectors">claude.ai/customize/connectors</a>, not per session or per agent.</p>
+<p>What the kit recommends, strongest first:</p>
+<ol class="recs">
+<li><h3>Separate accounts</h3><p>Run the agents on a separate Claude account with no connectors, such as your team&rsquo;s own agent account, and keep your personal connectors on your own account. This is the only hard boundary.</p></li>
+<li><h3>Block connectors in the policy</h3><p>Deny every connector tool by default in policies.json, with that rule&rsquo;s breaker on (blocking) from day one, and allow named tools only. This is defence in depth, not a boundary: it covers only sessions that run the repository&rsquo;s hooks. The live example below has this rule, and its team reports running it in observe mode for now.</p></li>
+<li><h3>Sign in to Google in the browser</h3><p>Where a website needs Google, it signs in in the browser as the agent account, through Google&rsquo;s own APIs for Drive and Chat, never through a person&rsquo;s Claude connector.</p></li>
+</ol></div></section>
+<section class="sec" aria-labelledby="live-t"><div class="w"><h2 id="live-t">A live example</h2>
+<p>One team runs this today, in public: the PrompTugal news site&rsquo;s agents. Their files, on GitHub:</p><ul><li><a href="https://github.com/PrompTugal/PrompTugal__News__Website/blob/dev/board/abp/README.md">board/abp/README.md</a>: How the team's policies work</li><li><a href="https://github.com/PrompTugal/PrompTugal__News__Website/blob/dev/board/abp/policies.json">board/abp/policies.json</a>: The full policy file (one team, many agents)</li><li><a href="https://github.com/PrompTugal/PrompTugal__News__Website/blob/dev/board/abp/security.md">board/abp/security.md</a>: A generated behaviour policy, for the security agent</li><li><a href="https://github.com/PrompTugal/PrompTugal__News__Website/tree/dev/board/abp/reports/">board/abp/reports/</a>: The hourly reviews</li><li><a href="https://github.com/PrompTugal/PrompTugal__News__Website/tree/dev/board/runs/">board/runs/</a>: Run reports</li><li><a href="https://github.com/PrompTugal/PrompTugal__News__Website/blob/dev/board/team/security/ROLE.md">board/team/security/ROLE.md</a>: The security agent's role</li><li><a href="https://github.com/PrompTugal/PrompTugal__News__Website/blob/dev/.claude/settings.json">.claude/settings.json</a>: The hook wiring</li></ul>
+<p class="fine">These links will move to the ABP agent&rsquo;s own site, abp.agents.sovereignweb.site, once it is up.</p></div></section>
+<section class="sec" aria-labelledby="why-t"><div class="w"><h2 id="why-t">Why it matters: case studies</h2>
+<p>Six published case studies from that team, each a real incident and what the policies did:</p><ul><li>The relayed yes</li><li>A key in a transcript</li><li>An XSS found within the hour</li><li>The email that turned the gate red</li><li>A house rule the sub-agent did not know</li><li>Per-session leak-scan allowlists</li></ul>
+<p><a href="https://github.com/PrompTugal/PrompTugal__News__Website/blob/dev/board/abp/case-studies/README.md">Read them on GitHub</a>.</p></div></section>
+<section class="sec" aria-labelledby="lic-t"><div class="w"><h2 id="lic-t">Licence</h2>
+<p>The templates are adapted from the PrompTugal news site&rsquo;s repository, whose code is under Apache-2.0 and whose text is under CC BY 4.0. What is adapted here keeps those licences.</p></div></section>
+</main>
+<footer class="ft"><div class="w">
+<div class="cols">
+  <div><p><strong>Sovereign Website</strong></p><ul><li><a href="../how-it-works.html">How it works</a></li><li><a href="../pricing.html">Prices</a></li><li><a href="../examples.html">Examples</a></li><li><a href="../open.html">Open pattern</a></li></ul></div>
+  <div><p><strong>More</strong></p><ul><li><a href="../moving.html">Moving your site</a></li><li><a href="../domain.html">Your domain</a></li><li><a href="../partners.html">Partners</a></li><li><a href="../trust.html">Trust</a></li><li><a href="../pt/index.html" lang="pt-PT">Português</a></li></ul></div>
+  <div><p><strong>The family</strong></p><ul><li><a href="https://sovereignwebsite.ai/">Sovereign Website</a></li><li><a href="https://sovereignwebsite.org/">Principles</a></li><li><a href="https://sovereignwebsite.site/">Hosted</a></li><li><a href="https://hub.sovereignweb.site/">Hub</a></li><li><a href="https://vault.sovereignwebsite.site/">Vault</a></li><li><a href="https://agenticcells.ai/">AgentiCCells</a></li><li><a href="https://riskmandate.ai/">RiskMandate</a></li><li><a href="https://newsroom.sgit.ai/">Newsroom</a></li></ul></div>
+</div>
+<p><strong>Where things stand:</strong> the hosted service under this name does not exist yet.</p>
+<p class="fine" style="color:inherit">sovereignwebsite.ai is static files: no scripts, no forms, no cookies, no tracking. <a href="../designs/index.html">All designs</a>, <a href="../index.html">the current home page</a>.</p>
+</div></footer>
+</body>
+</html>

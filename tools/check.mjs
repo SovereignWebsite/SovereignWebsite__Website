@@ -53,7 +53,7 @@ for (const f of files) for (const w of [390, 1366]) for (const scheme of ['light
   await p.goto(`http://localhost:${PORT}/${f}`);
   const r = await p.evaluate(() => ({ ov: document.documentElement.scrollWidth > innerWidth, top: document.querySelector('.pick-design')?.getBoundingClientRect().top ?? -1 }));
   if (r.ov) fail(`${f} ${w}px ${scheme}: sideways scroll`);
-  if (PICK_OPEN && !f.startsWith('for/') && (r.top < 0 || r.top > 60)) fail(`${f} ${w}px: picker not at the top`);
+  if (PICK_OPEN && !f.startsWith('for/') && !f.startsWith('abp/') && (r.top < 0 || r.top > 60)) fail(`${f} ${w}px: picker not at the top`);
   const a = await new AxeBuilder({ page: p }).withTags(['wcag2a', 'wcag2aa']).analyze();
   for (const v of a.violations) fail(`${f} ${w}px ${scheme}: axe ${v.id} (${v.nodes.length}) ${v.help}`);
   await ctx.close();

@@ -43,7 +43,7 @@ for f in sorted(SITE.rglob("*.html")):
     rel = f.relative_to(SITE)
     if rel.parts[0] == "designs" and rel.stem.split("-")[0] in {str(n) for n, *_ in ROUND + ROUND2}:
         continue
-    if rel.parts[0] == "for":  # sector pages are emailed links, not part of the pick (a.design, 25 Nov)
+    if rel.parts[0] in ("for", "abp"):  # sector pages are emailed links, not part of the pick (a.design, 25 Nov)
         continue
     s = f.read_text(encoding="utf-8")
     s = re.sub(r"<!-- picker:start -->.*?<!-- picker:end -->\n?", "", s, flags=re.S)
