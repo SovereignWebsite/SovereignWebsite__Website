@@ -147,3 +147,7 @@ body.rd{margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.6 va
 .pick-design .pk-panel ul{grid-template-columns:repeat(2,1fr)}
 @media(min-width:56rem){.pick-design .pk-panel>ul{grid-template-columns:repeat(5,1fr)}}
 .pick-design .pk-panel img{aspect-ratio:195/422;object-fit:cover}
+.d-five .five .ph .pt{display:block;font-size:1.1rem;line-height:1.1;margin:12px 0 0}
+.d-five .five .ph{text-align:left;font-size:1rem}
+.d-five .five .ph.n1{color:#111}.d-five .five .ph.n2{color:#3b2f22}.d-five .five .ph.n3{color:#fff}.d-five .five .ph.n4{color:#f3efe6}.d-five .five .ph.n5{color:#222}
+.d-five .five .ph .pt,.d-five .five .ph b{color:inherit;text-align:left}

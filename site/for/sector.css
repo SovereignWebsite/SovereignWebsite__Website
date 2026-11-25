@@ -1,0 +1,28 @@
+/* Sector pages: one short page per kind of person, built on the round 1 tokens (../designs/round.css). */
+.sector{padding-top:40px}
+.sgrid{display:grid;gap:32px}
+@media(min-width:56rem){.sgrid{grid-template-columns:1.2fr 1fr;align-items:center}}
+.sgrid>*{min-width:0}
+.priceline{max-width:var(--text)}
+.sample{margin:0;justify-self:center}
+.phone{width:240px;height:440px;border:10px solid var(--ink);border-radius:32px;background:var(--card);color:var(--ink);overflow:hidden;padding:14px;font-size:12px}
+.s-top b{font:600 14px var(--serif)}
+.s-nav{display:flex;gap:8px;margin-top:4px;color:var(--muted)}
+.s-hero{text-align:center;margin:18px 0 10px;color:var(--accent)}
+.s-name{font:600 18px var(--serif);margin:8px 0 0;color:var(--ink)}
+.s-role{margin:0;color:var(--muted)}
+.s-blurb{color:var(--muted);line-height:1.4}
+.s-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.s-grid i{height:56px;border-radius:6px;background:var(--accent-soft)}
+.sample figcaption{text-align:center;font-size:.875rem;color:var(--muted);margin-top:8px}
+.sec:has(.prom){padding-top:40px}
+/* keep the whole pitch to a short scroll on a phone */
+@media(max-width:30rem){.vh-phone{display:none}}
+body.rd .sec{padding:40px 0}
+.prom{gap:16px}
+.steps.short{gap:8px}
+.steps.short li{display:flex;align-items:baseline;gap:12px}
+.steps.short li::before{font-size:1.6rem;margin:0}
+.ft-short{padding:28px 0}
+.ft-short p{margin:6px 0}
+.phone{height:400px}
