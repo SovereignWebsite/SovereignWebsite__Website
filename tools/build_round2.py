@@ -64,7 +64,6 @@ def pricing_page(n):
         f'<section class="sec" aria-label="The three tiers"><div class="w">{tiers()}</div></section>',
         section("faq", "Questions", faq()),
         section("compare", "How it compares", compare(more=False)),
-        f'<section class="sec"><div class="w"><p><a href="{n}.html">Back to the home page of design {n}</a></p></div></section>',
     ])
 
 
@@ -91,12 +90,12 @@ def consultancy(n):
     return "\n".join([
         f'''<section class="sec chero" aria-labelledby="hero-title"><div class="w cgrid">
 <div><p class="kicker">Sovereign Website</p><h1 id="hero-title">Websites you own, built by a team of agents.</h1>
-<p class="lead">We build your site from your own words and photos, and hand it over: the files, the history and the choice of where it runs.</p>
-<div class="acts">{ACT}<a class="btn alt" href="{n}-pricing.html">See prices</a></div></div>
+<p class="lead">Built from your words and photos. Yours to keep.</p>
+<div class="acts">{ACT}<a class="btn alt" href="pricing.html">See prices</a></div></div>
 <div><p class="kicker">What we do</p><ul class="svc">{grid}</ul></div></div></section>''',
         f'<section class="sec procband" aria-labelledby="proc-t"><div class="w"><h2 id="proc-t">How we work</h2><ol class="proc">{steps}</ol></div></section>',
         section("proof", "Proof you can check", f'<ul class="proofs">{pr}</ul>'),
-        section("prices", "Prices", tiers(full=False) + f'<p><a href="{n}-pricing.html">Full prices, questions and comparison</a></p>'),
+        section("prices", "Prices", tiers(full=False) + f'<p><a href="pricing.html">Full prices, questions and comparison</a></p>'),
     ])
 
 
@@ -104,15 +103,15 @@ def product(n):
     return "\n".join([
         f'''<section class="sec phero" aria-labelledby="hero-title"><div class="w">
 <p class="kicker">Sovereign Website</p><h1 id="hero-title">Your website, built by agents and handed to you.</h1>
-<p class="lead">Five designs, the one you pick, and the files to keep.</p><div class="acts">{ACT}</div>
+<p class="lead">We show you designs to pick from, and you keep the files.</p><div class="acts">{ACT}</div>
 <figure class="frame"><div class="fbar" aria-hidden="true"><i></i><i></i><i></i><span>sovereignwebsite.ai/designs/</span></div>
 <img src="img/desk-designs.jpg" width="640" height="400" alt="Screenshot of this site's own design picker page, showing five designs side by side">
 <figcaption>A real page: this site choosing its own design.</figcaption></figure></div></section>''',
         '''<section class="sec" aria-label="Why it is different"><div class="w"><ul class="three">
-<li><h3>Five designs, then you pick</h3><p>Several directions made from your material, so you choose by looking.</p></li>
+<li><h3>Designs to pick from</h3><p>Several directions made from your material, so you choose by looking.</p></li>
 <li><h3>Plain files you can move</h3><p>No server code and no database. Any host that serves files can run it.</p></li>
 <li><h3>Paid once</h3><p>No subscription from us. You pay for your own domain if you want one.</p></li></ul></div></section>''',
-        section("prices", "Prices", tiers() + f'<p><a href="{n}-pricing.html">Questions and comparison</a></p>', cls="ptable"),
+        section("prices", "Prices", tiers() + f'<p><a href="pricing.html">Questions and comparison</a></p>', cls="ptable"),
     ])
 
 
@@ -120,14 +119,14 @@ def portfolio(n):
     shots = [("desk-chapter", "A community chapter", EXAMPLES_DATA[0][0]), ("desk-author", "An author's book site", EXAMPLES_DATA[1][0]),
              ("desk-grants", "A funding tool", EXAMPLES_DATA[2][0]), ("desk-whois", "A lookup tool", EXAMPLES_DATA[3][0]),
              ("desk-hub", "The Hub, our gallery of sites", "https://hub.sovereignweb.site/"), ("desk-designs", "This site, choosing its design", "index.html")]
-    tiles = "".join(f'<li><a href="{u}"><img src="img/{i}.jpg" width="640" height="400" alt="Screenshot: {k.lower()}" loading="lazy" decoding="async"><span>{k}</span></a></li>' for i, k, u in shots)
+    tiles = "".join(f'<li><a href="{u}"><img src="img/{i}.jpg" width="640" height="400" alt="Screenshot: {k.lower()}" decoding="async"><span>{k}</span></a></li>' for i, k, u in shots)
     return "\n".join([
         f'''<section class="sec pfhero" aria-labelledby="hero-title"><div class="w">
 <div class="pfhead"><h1 id="hero-title">Real sites, built by agents, owned by the people they are for.</h1>{ACT}</div>
 <ul class="pfgrid">{tiles}</ul>
 <p class="fine">Real sites, shown with their owners' agreement or ours. The author's site is Dinis Cruz's own book, served over http for now.</p></div></section>''',
         section("offer", "Yours, in three steps", '<ol class="steps"><li><h3>Tell us about you</h3><p>Who you are, what you do, a link or two and your photos.</p></li><li><h3>We build it</h3><p>A team of agents makes your site from what you sent.</p></li><li><h3>It is handed over</h3><p>The files and every change since the first are yours to keep and move.</p></li></ol>'),
-        section("prices", "Prices", tiers(full=False) + f'<p><a href="{n}-pricing.html">Full prices, questions and comparison</a></p>'),
+        section("prices", "Prices", tiers(full=False) + f'<p><a href="pricing.html">Full prices, questions and comparison</a></p>'),
     ])
 
 
@@ -140,14 +139,14 @@ def case(n):
 <p class="stand">Ines Hart is fictional. Her story shows how the service works, step by step; she is not a customer.</p>
 <p class="dropcap">Ines paints the sea, in oil and watercolour. Her work lived on a page inside a website builder: a monthly plan, a design she could not change much, and no way to take the site with her if she left.</p>
 <p>She sent a short note, a few paintings and a link to her Instagram page. A team of agents read them and made five designs of the same site. She picked the one that gave the paintings the most room, asked for one change, and the site was handed over.</p>
-<blockquote class="pull"><p>&ldquo;I wanted a site I could keep.&rdquo;</p><footer>Ines Hart, a fictional painter</footer></blockquote>
+<p class="pull pullout" role="note">The files and every change since the first are hers.</p>
 <p>Now the files and every change since the first are hers. She changes the site by asking her own AI, and she can move it to any host that serves files.</p>
 <div class="ba"><figure>{before}<figcaption>Before: a page on a builder's plan (illustration)</figcaption></figure><figure>{after}<figcaption>After: her own site (illustration)</figcaption></figure></div>
 <h2>The steps</h2><ol class="tl2"><li><b>She asks</b> with a note, photos and a link.</li><li><b>Five designs</b> of the same site.</li><li><b>She picks</b> one and asks for a change.</li><li><b>It is hers</b>: the files and their history.</li></ol>
 <h2>In numbers</h2><ul class="nums"><li><b>3</b><span>steps to ask</span></li><li><b>5</b><span>designs to choose from</span></li><li><b>&pound;0</b><span>a month from us</span></li></ul>
 </div></article>''',
         f'<section class="sec yours" aria-labelledby="y-t"><div class="w narrow"><h2 id="y-t">Yours next.</h2><p class="lead">Tell us about you, and a team of agents builds a site you keep.</p><div class="acts">{ACT}</div></div></section>',
-        section("prices", "Prices", tiers(full=False) + f'<p><a href="{n}-pricing.html">Full prices, questions and comparison</a></p>'),
+        section("prices", "Prices", tiers(full=False) + f'<p><a href="pricing.html">Full prices, questions and comparison</a></p>'),
     ])
 
 
@@ -166,7 +165,7 @@ def tour(n):
 <p class="fine">Choose a step to see its screen. The screens are illustrations.</p>
 {radios}<div class="tour"><ol class="tsteps">{labels}</ol><div class="screens">{form}{five}{pick}{files}</div></div>
 <div class="acts">{ACT}</div></div></div></section>''',
-        section("prices", "Prices", tiers(full=False) + f'<p><a href="{n}-pricing.html">Full prices, questions and comparison</a></p>'),
+        section("prices", "Prices", tiers(full=False) + f'<p><a href="pricing.html">Full prices, questions and comparison</a></p>'),
     ])
 
 
@@ -185,7 +184,7 @@ def write(n, name, cls, main, fname, title_suffix=""):
 def main():
     for n, name, _, cls in ROUND2:
         write(n, name, cls, BUILD[n](n), f"{n}.html")
-        write(n, name, cls, pricing_page(n), f"{n}-pricing.html", ": prices")
+        write(n, name, cls, pricing_page(n), f"pricing.html", ": prices")
 
 
 if __name__ == "__main__":

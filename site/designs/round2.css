@@ -95,3 +95,6 @@
 .thead .tour{margin-top:16px}
 .r2 .phead{padding-bottom:8px}
 .r2 .phead+.sec{padding-top:24px}
+/* 11 on a phone: services straight under the headline */
+@media(max-width:40rem){.d-con .chero h1{font-size:2.1rem}.d-con .chero{padding-top:24px}.d-con .cgrid{gap:20px}.d-con .chero .acts{margin:16px 0 0}}
+.pullout{font:600 clamp(1.5rem,4vw,2rem)/1.25 var(--serif);border-left:4px solid var(--accent);padding-left:16px;margin:32px 0}

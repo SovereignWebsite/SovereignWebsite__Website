@@ -165,7 +165,7 @@ def compare(n_rows=None, more=True):
     rows = ROWS if n_rows is None else ROWS[:n_rows]
     body = "".join(f'<tr><th scope="row">{r[0]}</th><td class="us">{r[1]}</td><td>{r[2]}</td><td>{r[3]}</td><td>{r[4]}</td></tr>' for r in rows)
     link = '<p><a href="7.html#compare">See the full comparison</a></p>' if more else ""
-    return f'''<div class="cmpwrap"><table class="cmp"><caption class="fine" style="caption-side:bottom;text-align:left;padding-top:8px">Kinds of provider, not named companies. &ldquo;Usually&rdquo; means what is common, not true of every provider. For named builders, the Hub keeps a table quoted from their own pages, checked on 23 November 2026: <a href="https://hub.sovereignweb.site/">hub.sovereignweb.site</a>. Swipe sideways on a phone.</caption>
+    return f'''<p class="fine swipe">Swipe sideways for more.</p><div class="cmpwrap"><table class="cmp"><caption class="fine" style="caption-side:bottom;text-align:left;padding-top:8px">Kinds of provider, not named companies. &ldquo;Usually&rdquo; means what is common, not true of every provider. For named builders, the Hub keeps a table quoted from their own pages, checked on 23 November 2026: <a href="https://hub.sovereignweb.site/">hub.sovereignweb.site</a>.</caption>
 <thead><tr><th scope="col"><span class="fine">Question</span></th><th scope="col">Sovereign Website</th><th scope="col">Website builder subscription</th><th scope="col">Freelance designer</th><th scope="col">Agency</th></tr></thead>
 <tbody>{body}</tbody></table></div>{link}'''
 
@@ -288,12 +288,12 @@ REVIEWS = "https://design.agents.sovereignweb.site/factory/dinis-cruz/account-a/
 
 def designs_index():
     pics = "".join(f'<li><a href="{n}.html"><img src="thumbs/{n}-phone.jpg" width="195" height="422" alt="Phone first screen of design {n}, {name}" loading="lazy" decoding="async"><span>Design {n}, {name}</span></a></li>' for n, name, _, _ in CURRENT)
-    rows = "".join(f'<tr><th scope="row"><a href="{n}.html">{n}, {name}</a> (<a href="{n}-pricing.html">prices</a>)</th><td>{idea}</td><td>{INFO[n][0]}</td><td>{INFO[n][1]}</td><td>{"Yes" if cls in ("d-five",) else "No"}</td></tr>' for n, name, idea, cls in CURRENT)
+    rows = "".join(f'<tr><th scope="row"><a href="{n}.html">{n}, {name}</a></th><td>{idea}</td><td>{INFO[n][0]}</td><td>{INFO[n][1]}</td><td>{"Yes" if cls in ("d-five",) else "No"}</td></tr>' for n, name, idea, cls in CURRENT)
     old = "".join(f'<li><a href="{n}.html">Design {n}, {name}</a>: {line}{"" if line.endswith("?") else "."}</li>' for n, name, line in older())
     main = f'''<section class="sec" aria-labelledby="hero-title"><div class="w">
 <p class="kicker">Choose a design</p><h1 id="hero-title">Five directions for this site</h1>
 <p class="lead">Round 2 of the restyle, 25 November 2026: the same words and prices in five structurally different designs, each with its own pricing page. <strong>Not picked yet. The live site uses design 1 meanwhile.</strong></p>
-<ul class="ex picks">{pics}</ul></div></section>
+<ul class="ex picks">{pics}</ul><p>Every round 2 design shares one <a href="pricing.html">pricing page</a>.</p></div></section>
 <section class="sec" aria-labelledby="t-t"><div class="w"><h2 id="t-t">Side by side</h2>
 <p class="fine swipe">Swipe for more.</p><div class="cmpwrap"><table class="cmp"><thead><tr><th scope="col">Design</th><th scope="col">The idea</th><th scope="col">Best for</th><th scope="col">Weakest at</th><th scope="col">Dark first</th></tr></thead><tbody>{rows}</tbody></table></div></div></section>
 <section class="sec" aria-labelledby="r-t"><div class="w"><h2 id="r-t">Who recommends what</h2>
