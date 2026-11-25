@@ -18,3 +18,4 @@
 - Tools: Gmail and CRM tools "being built" only; GitHub tool built but in security review; say nothing is live that is not.
 - Hand-over notes from conductor.b (IaC 28416a8): not read, as I may not attach that repository; waiting for Dinis.
 - Pages: first deploy attempt sometimes fails (a race); retry added in ae78268.
+- IaC PR 5 cannot be merged (Dinis, 25 Nov, in my session). Not mine and IaC is not readable from here; passed to a.maestro.

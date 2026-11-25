@@ -124,7 +124,7 @@ body{{margin:0;width:1200px;height:630px;background:#FAF7F0;color:#14213D;font-f
 h1{{font:600 84px/1.05 "Iowan Old Style",Palatino,Georgia,serif;margin:22px 0 26px;max-width:960px}}
 p{{font-size:34px;color:#4A5568;margin:0}}.b{{margin-top:40px;font-weight:700;font-size:30px;display:flex;align-items:center;gap:14px}}
 .b svg{{width:40px;height:40px}}</style></head><body>
-<div class="k">{d['kicker']}</div><h1>{d['h1']}</h1><p>&pound;50 or &pound;500, paid once. Built by agents, owned by you.</p>
+<div class="k">{d['kicker']}</div><h1>{d['h1']}</h1><p>{d.get('sub', '&pound;50 or &pound;500, paid once. Built by agents, owned by you.')}</p>
 <div class="b">{LOGO}Sovereign Website</div></body></html>'''
 
 

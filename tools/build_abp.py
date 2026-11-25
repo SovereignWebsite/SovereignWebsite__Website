@@ -68,14 +68,14 @@ HEAD = """<!doctype html>
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Sovereign Website">
 <meta property="og:locale" content="en_GB">
-<meta property="og:image" content="https://sovereignwebsite.ai/assets/share/card-1200x630.jpg">
+<meta property="og:image" content="https://sovereignwebsite.ai/abp/og-abp.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Sovereign Website: your website, built by agents, owned by you.">
+<meta property="og:image:alt" content="Agent Behaviour Policy starter kit: six files for a team of Claude Code agents, free to download.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{title}">
 <meta name="twitter:description" content="{desc}">
-<meta name="twitter:image" content="https://sovereignwebsite.ai/assets/share/card-1200x630.jpg">
+<meta name="twitter:image" content="https://sovereignwebsite.ai/abp/og-abp.png">
 <link rel="canonical" href="https://sovereignwebsite.ai/{path}">
 <link rel="icon" href="{up}favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="{up}designs/round.css">
