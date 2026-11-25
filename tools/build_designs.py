@@ -18,6 +18,13 @@ ROUND = [
     (9, "Ownership", "A timeline of what you hold, each step with its proof", "d-own"),
     (10, "The Hub", "A map of real sites, with room for yours", "d-hub"),
 ]
+ROUND2 = [
+    (11, "Consultancy", "Services, process and proof, like a consultancy", "d-con"),
+    (12, "Product", "One sentence, one screenshot, the prices on the home", "d-prod"),
+    (13, "Portfolio", "Real sites first, the offer after", "d-port"),
+    (14, "Case study", "One painter's story, fictional and labelled", "d-case"),
+    (15, "Product tour", "Four steps, each with its screen", "d-tour"),
+]
 EARLIER = [
     (1, "The plain promise", "Chosen on 20 November 2026; the current home page"),
     (2, "The question", "Where is your website, from 0 to 5?"),
@@ -39,6 +46,13 @@ NAV = [("../how-it-works.html", "How it works"), ("../examples.html", "Examples"
 LOGO = '<svg viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect x="2" y="2" width="28" height="28" rx="7" fill="none" stroke="currentColor" stroke-width="2.5"/><path d="M10 16.5l4 4 8-9" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>'
 
 
+CURRENT = ROUND2
+
+
+def older():
+    return [(n, name, line) for n, name, line, _ in ROUND] + EARLIER
+
+
 def picker(current):
     def item(n, name, line, now):
         cur = ' aria-current="page"' if now else ""
@@ -46,18 +60,18 @@ def picker(current):
         live = ' <span class="pk-tag">Live</span>' if n == 1 else ""
         return (f'<li><a href="{n}.html"{cur}><img src="thumbs/{n}-phone.jpg" width="195" height="422" alt="" loading="lazy" decoding="async">'
                 f'<strong>Design {n}, {name}{live}</strong><span>{line}</span>{here}</a></li>')
-    cur_items = "\n".join(item(n, name, line, n == current) for n, name, line, _ in ROUND)
-    old_items = "\n".join(item(n, name, line, n == current) for n, name, line in EARLIER)
+    cur_items = "\n".join(item(n, name, line, n == current) for n, name, line, _ in CURRENT)
+    old_items = "\n".join(item(n, name, line, n == current) for n, name, line in older())
     return f'''<div class="pickbar"><div class="w">
 <details class="pick-design">
   <summary>Choose a design</summary>
   <div class="pk-panel">
-    <p class="pk-intro">Round 1 of the restyle: five directions for this site, each with the same words and prices. Dinis Cruz picks one; until then the home page stays as it is. <a href="index.html">All designs</a></p>
+    <p class="pk-intro">Round 2 of the restyle: five structurally different directions for this site, each with the same words and prices. Dinis Cruz picks one; until then the home page stays as it is. <a href="index.html">All designs</a></p>
     <ul>
 {cur_items}
     </ul>
     <details class="pk-old">
-      <summary>Earlier designs (5)</summary>
+      <summary>Earlier designs ({len(older())})</summary>
       <ul>
 {old_items}
       </ul>
@@ -65,7 +79,7 @@ def picker(current):
     <p><a href="index.html">Compare all designs</a></p>
   </div>
 </details>
-<span class="fine">Preview: design {current}, {dict((n, nm) for n, nm, _, _ in ROUND).get(current, "")}. The live site uses design 1. <a href="index.html">All designs</a></span>
+<span class="fine">Preview: design {current}, {dict((n, nm) for n, nm, _ in [(a, b, c) for a, b, c, _ in CURRENT] + older()).get(current, "")}. The live site uses design 1. <a href="index.html">All designs</a></span>
 </div></div>'''
 
 
@@ -258,6 +272,11 @@ def hubmap():
 
 
 INFO = {
+    11: ("Visitors who want to know what we do, how and for how much", "Text-led; the work itself appears lower down"),
+    12: ("Visitors who decide on price; the tiers are on the home", "One screenshot carries the whole first impression"),
+    13: ("Visitors who want to see real sites before reading", "Six examples so far; it needs more to impress"),
+    14: ("Non-technical readers who like a story", "The story is fictional, and says so"),
+    15: ("Visitors who want to see the steps before asking", "The screens are illustrations, not the real thing"),
     6: ("First-time visitors who want the offer, plainly", "Calm; it may read as plain next to 8"),
     7: ("Readers who compare before they ask, or print it", "The least visual of the five"),
     8: ("Showing the method in one tap", "Dark and loud; not everyone's taste"),
@@ -268,21 +287,21 @@ REVIEWS = "https://design.agents.sovereignweb.site/factory/dinis-cruz/account-a/
 
 
 def designs_index():
-    pics = "".join(f'<li><a href="{n}.html"><img src="thumbs/{n}-phone.jpg" width="195" height="422" alt="Phone first screen of design {n}, {name}" loading="lazy" decoding="async"><span>Design {n}, {name}</span></a></li>' for n, name, _, _ in ROUND)
-    rows = "".join(f'<tr><th scope="row"><a href="{n}.html">{n}, {name}</a></th><td>{idea}</td><td>{INFO[n][0]}</td><td>{INFO[n][1]}</td><td>{"Yes" if cls == "d-five" else "No"}</td></tr>' for n, name, idea, cls in ROUND)
-    old = "".join(f'<li><a href="{n}.html">Design {n}, {name}</a>: {line}{"" if line.endswith("?") else "."}</li>' for n, name, line in EARLIER)
+    pics = "".join(f'<li><a href="{n}.html"><img src="thumbs/{n}-phone.jpg" width="195" height="422" alt="Phone first screen of design {n}, {name}" loading="lazy" decoding="async"><span>Design {n}, {name}</span></a></li>' for n, name, _, _ in CURRENT)
+    rows = "".join(f'<tr><th scope="row"><a href="{n}.html">{n}, {name}</a> (<a href="{n}-pricing.html">prices</a>)</th><td>{idea}</td><td>{INFO[n][0]}</td><td>{INFO[n][1]}</td><td>{"Yes" if cls in ("d-five",) else "No"}</td></tr>' for n, name, idea, cls in CURRENT)
+    old = "".join(f'<li><a href="{n}.html">Design {n}, {name}</a>: {line}{"" if line.endswith("?") else "."}</li>' for n, name, line in older())
     main = f'''<section class="sec" aria-labelledby="hero-title"><div class="w">
 <p class="kicker">Choose a design</p><h1 id="hero-title">Five directions for this site</h1>
-<p class="lead">Round 1 of the restyle, 25 November 2026: the same words and prices in five structures. <strong>Not picked yet. The live site uses design 1 meanwhile.</strong></p>
+<p class="lead">Round 2 of the restyle, 25 November 2026: the same words and prices in five structurally different designs, each with its own pricing page. <strong>Not picked yet. The live site uses design 1 meanwhile.</strong></p>
 <ul class="ex picks">{pics}</ul></div></section>
 <section class="sec" aria-labelledby="t-t"><div class="w"><h2 id="t-t">Side by side</h2>
 <p class="fine swipe">Swipe for more.</p><div class="cmpwrap"><table class="cmp"><thead><tr><th scope="col">Design</th><th scope="col">The idea</th><th scope="col">Best for</th><th scope="col">Weakest at</th><th scope="col">Dark first</th></tr></thead><tbody>{rows}</tbody></table></div></div></section>
 <section class="sec" aria-labelledby="r-t"><div class="w"><h2 id="r-t">Who recommends what</h2>
-<ul class="prom"><li><h3>a.design, the design agent</h3><p>Design 6, Studio, with design 8's tap-to-recolour inside its North Studio strip; design 8 as the loud alternative. <a href="{REVIEWS}sovereignwebsite-ai-2026-11-25-round-1.html">Round 1 review</a></p></li>
-<li><h3>website.a, this site's keeper</h3><p>Design 6, Studio: it says what the offer is fastest on a phone. Design 7's full comparison belongs on the prices page whichever is picked.</p></li></ul></div></section>
+<ul class="prom"><li><h3>a.design, the design agent</h3><p>Round 2 is under review. <a href="{REVIEWS}sovereignwebsite-ai-2026-11-25-round-2-brief.html">Round 2 brief</a>; for round 1 they recommended design 6 with design 8's tap-to-recolour (<a href="{REVIEWS}sovereignwebsite-ai-2026-11-25-round-1.html">review</a>).</p></li>
+<li><h3>website.a, this site's keeper</h3><p>Design 11, Consultancy: it says what we do, how we work and what it costs on one screen. Design 12 if the prices should sit on the home page.</p></li></ul></div></section>
 <section class="sec" aria-labelledby="q-t"><div class="w"><h2 id="q-t">Three questions to ask of each</h2>
 <ol class="steps short"><li><h3>Does the first screen on a phone say what the site is for?</h3></li><li><h3>Can you do the main task, asking for a site, without hunting?</h3></li><li><h3>Would the owner say wow?</h3></li></ol></div></section>
-<section class="sec" aria-labelledby="o-t"><div class="w"><h2 id="o-t">Earlier designs</h2><p class="fine">The first five, from 20 November 2026. Design 1 is the live home page.</p><ul>{old}</ul></div></section>'''
+<section class="sec" aria-labelledby="o-t"><div class="w"><h2 id="o-t">Earlier designs</h2><p class="fine">Round 1 (designs 6 to 10) and the first five, from 20 November 2026. Design 1 is the live home page.</p><ul>{old}</ul></div></section>'''
     return main
 
 

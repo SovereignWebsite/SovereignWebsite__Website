@@ -6,7 +6,7 @@ import re, sys
 from pathlib import Path
 SITE = Path(__file__).resolve().parent.parent / "site"
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from build_designs import ROUND, EARLIER
+from build_designs import ROUND, ROUND2, CURRENT, older
 
 def block(prefix, current):
     def item(n, name, line):
@@ -15,20 +15,20 @@ def block(prefix, current):
         live = ' <span class="pk-tag">Live</span>' if n == 1 else ""
         return (f'<li><a href="{prefix}designs/{n}.html"{cur}><img src="{prefix}designs/thumbs/{n}-phone.jpg" width="195" height="422" alt="" loading="lazy" decoding="async">'
                 f'<strong>Design {n}, {name}{live}</strong><span>{line}</span>{here}</a></li>')
-    cur_items = "\n".join(item(n, nm, ln) for n, nm, ln, _ in ROUND)
-    old_items = "\n".join(item(n, nm, ln) for n, nm, ln in EARLIER)
-    names = {**{n: nm for n, nm, _, _ in ROUND}, **{n: nm for n, nm, _ in EARLIER}}
-    line = (f'Preview: design {current}, {names[current]}. The live site uses design 1.' if current else 'Round 1 of the restyle is open for picking. The live site uses design 1.')
+    cur_items = "\n".join(item(n, nm, ln) for n, nm, ln, _ in CURRENT)
+    old_items = "\n".join(item(n, nm, ln) for n, nm, ln in older())
+    names = {**{n: nm for n, nm, _, _ in CURRENT}, **{n: nm for n, nm, _ in older()}}
+    line = (f'Preview: design {current}, {names[current]}. The live site uses design 1.' if current else 'Round 2 of the restyle is open for picking. The live site uses design 1.')
     return f'''<!-- picker:start -->
 <div class="pickbar-top"><details class="pick-design">
   <summary>Choose a design</summary>
   <div class="pk-panel">
-    <p class="pk-intro">Round 1 of the restyle: five directions for this site, each with the same words and prices. Dinis Cruz picks one; until then the home page stays as it is. <a href="{prefix}designs/index.html">All designs</a></p>
+    <p class="pk-intro">Round 2 of the restyle: five structurally different directions for this site, each with the same words and prices. Dinis Cruz picks one; until then the home page stays as it is. <a href="{prefix}designs/index.html">All designs</a></p>
     <ul>
 {cur_items}
     </ul>
     <details class="pk-old">
-      <summary>Earlier designs (5)</summary>
+      <summary>Earlier designs ({len(older())})</summary>
       <ul>
 {old_items}
       </ul>
@@ -41,7 +41,7 @@ def block(prefix, current):
 remove = "--remove" in sys.argv
 for f in sorted(SITE.rglob("*.html")):
     rel = f.relative_to(SITE)
-    if rel.parts[0] == "designs" and rel.stem in {str(n) for n, *_ in ROUND}:
+    if rel.parts[0] == "designs" and rel.stem.split("-")[0] in {str(n) for n, *_ in ROUND + ROUND2}:
         continue
     if rel.parts[0] == "for":  # sector pages are emailed links, not part of the pick (a.design, 25 Nov)
         continue

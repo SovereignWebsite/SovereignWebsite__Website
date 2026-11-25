@@ -1,0 +1,97 @@
+/* Round 2 of the restyle (designs 11 to 15): five structures on the round 1 tokens. a.design's brief, 25 Nov 2026. */
+.r2 .w.narrow{max-width:46rem}
+/* shared: three-tier pricing columns */
+.tiers3{display:grid;gap:16px;grid-template-columns:1fr}
+@media(min-width:56rem){.tiers3{grid-template-columns:repeat(3,1fr);align-items:stretch}}
+.tcol{display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:28px}
+.tcol.mid{border:2px solid var(--accent)}
+.tname{font:600 .85rem/1.3 var(--sans);text-transform:uppercase;letter-spacing:.1em;color:var(--accent);margin:0}
+.tprice{font:600 3rem/1 var(--serif);margin:10px 0}
+.twho{color:var(--muted);margin:0 0 12px}
+.tlist{list-style:none;margin:0 0 16px;padding:0}
+.tlist li{display:flex;gap:10px;padding:6px 0;border-top:1px solid var(--line);font-size:.95rem}
+.mk{color:var(--accent);font-weight:700}.mk.no{color:var(--muted)}
+.tact{margin-top:auto}.tact .btn{width:100%}
+.faqs{max-width:46rem}
+.q{border-bottom:1px solid var(--line);padding:14px 0}.q summary{cursor:pointer;font-weight:600}.q p{margin:8px 0 0}
+.phead{padding-bottom:24px}
+/* 11 Consultancy: statement left, services grid right, process band, proof */
+.cgrid{display:grid;gap:40px}
+@media(min-width:64rem){.cgrid{grid-template-columns:1fr 1.1fr;align-items:start}}
+.cgrid>*{min-width:0}
+.d-con h1{font-size:clamp(2.2rem,5vw,3.6rem)}
+.svc{list-style:none;margin:0;padding:0;display:grid;gap:1px;background:var(--line);border:1px solid var(--line);grid-template-columns:repeat(2,1fr)}
+.svc li{background:var(--bg)}
+.svc a{display:block;padding:18px;color:var(--ink);text-decoration:none;height:100%}
+.svc a:hover h3,.svc a:focus-visible h3{color:var(--accent)}
+.svc p{margin:0;font-size:.9rem;color:var(--muted)}
+.procband{background:var(--band);color:var(--band-ink)}
+.procband h2{color:var(--band-ink)}
+.proc{list-style:none;margin:0;padding:0;display:grid;gap:24px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.proc li{border-top:2px solid var(--band-accent);padding-top:12px}
+.proc .n{font:600 .9rem var(--sans);color:var(--band-accent)}
+.proc p{color:var(--band-ink);opacity:.85;margin:0}
+.proofs{list-style:none;margin:0;padding:0;display:grid;gap:24px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+/* 12 Product: centred hero, framed screenshot */
+.phero{text-align:center}
+.phero .lead{margin-left:auto;margin-right:auto}
+.phero .acts{justify-content:center}
+.d-prod h1{max-width:52rem;margin-left:auto;margin-right:auto}
+.frame{max-width:960px;margin:40px auto 0;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--card);box-shadow:0 1px 2px rgba(0,0,0,.06)}
+.fbar{display:flex;align-items:center;gap:6px;padding:10px 12px;border-bottom:1px solid var(--line);font-size:.8rem;color:var(--muted)}
+.fbar i{width:10px;height:10px;border-radius:50%;background:var(--line)}.fbar span{margin-left:12px}
+.frame img{display:block;width:100%;height:auto}
+.frame figcaption{font-size:.85rem;color:var(--muted);padding:8px}
+.three{list-style:none;margin:0;padding:0;display:grid;gap:24px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));text-align:center}
+/* 13 Portfolio: the work is the first screen */
+.pfhero{padding-top:32px}
+.pfhead{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:16px;margin-bottom:24px}
+.d-port h1{font-size:clamp(1.8rem,4vw,2.8rem);max-width:44rem;margin:0}
+.pfgrid{list-style:none;margin:0;padding:0;display:grid;gap:12px;grid-template-columns:repeat(2,1fr)}
+@media(min-width:56rem){.pfgrid{grid-template-columns:repeat(3,1fr)}}
+.pfgrid a{display:block;color:var(--ink);text-decoration:none}
+.pfgrid img{display:block;width:100%;height:auto;border-radius:8px;border:1px solid var(--line)}
+.pfgrid span{display:block;font-size:.875rem;margin-top:6px}
+/* 14 Case study: one magazine story */
+.d-case .story h1{font-size:clamp(2.2rem,6vw,3.8rem)}
+.stand{font-size:1.15rem;color:var(--muted);border-left:3px solid var(--accent);padding-left:12px}
+.dropcap::first-letter{float:left;font:600 4.2rem/.8 var(--serif);margin:6px 10px 0 0;color:var(--accent)}
+.story p{font-size:1.1rem}
+.pull{margin:32px 0;padding:0;border:0}.pull p{font:600 clamp(1.6rem,4vw,2.2rem)/1.2 var(--serif);margin:0}.pull footer{color:var(--muted);margin-top:8px}
+.ba{display:grid;gap:16px;grid-template-columns:1fr 1fr;margin:32px 0}
+.ba figure{margin:0}.ba figcaption{font-size:.85rem;color:var(--muted);margin-top:6px}
+.mock{height:180px;border-radius:8px;border:1px solid var(--line);padding:12px;display:flex;flex-direction:column;gap:8px;font-size:.75rem}
+.mock i{display:block;height:36px;border-radius:4px;background:var(--line)}
+.mock.before{background:#eceae4;color:#444}.mock.before span{margin-top:auto;align-self:flex-start;background:#c9c4b8;padding:2px 8px;border-radius:4px}
+.mock.after{background:#0F2A4A;color:#F3EFE6}.mock.after b{letter-spacing:.2em}.mock.after p{margin:0;font-family:var(--serif);font-size:1rem}.mock.after i{background:#2E5E8A}
+.tl2{padding-left:20px}.tl2 li{margin:8px 0}
+.nums{list-style:none;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.nums b{display:block;font:600 2.6rem/1 var(--serif);color:var(--accent)}.nums span{color:var(--muted);font-size:.9rem}
+.yours{background:var(--accent-soft)}
+/* 15 Product tour: steps left, screen right, switched by :checked */
+.thero h1{font-size:clamp(2rem,5vw,3.2rem);max-width:44rem}
+.tour{display:grid;gap:24px}
+@media(min-width:56rem){.tour{grid-template-columns:1fr 1.2fr;align-items:start}}
+.tour>*{min-width:0}
+.tsteps{list-style:none;margin:0;padding:0}
+.tsteps label{display:grid;grid-template-columns:40px 1fr;gap:2px 12px;padding:16px;border:1px solid var(--line);border-radius:var(--r);margin-bottom:8px;cursor:pointer;background:var(--card)}
+.tsteps .n{grid-row:span 2;display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:var(--accent-soft);color:var(--accent);font-weight:700}
+.tsteps label span:last-child{color:var(--muted);font-size:.95rem}
+.r2 .pickn{position:absolute;opacity:0;pointer-events:none}
+#t1:checked~.tour label[for=t1],#t2:checked~.tour label[for=t2],#t3:checked~.tour label[for=t3],#t4:checked~.tour label[for=t4]{border-color:var(--accent);box-shadow:inset 3px 0 0 var(--accent)}
+.pickn:focus-visible~.tour .tsteps{outline:2px solid var(--accent);outline-offset:4px}
+.screens{border:10px solid var(--ink);border-radius:20px;background:var(--card);min-height:320px;padding:20px}
+.scr{display:none}
+#t1:checked~.tour .s1,#t2:checked~.tour .s2,#t3:checked~.tour .s3,#t4:checked~.tour .s4{display:block}
+.sh{font:600 1.3rem var(--serif);margin:0 0 12px}
+.fld{margin:0 0 10px;font-size:.85rem;color:var(--muted)}.fld i{display:block;height:34px;border:1px solid var(--line);border-radius:6px;margin-top:4px}
+.mini{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}.mini i{display:block;height:140px;border-radius:6px}
+.mini.one{grid-template-columns:1fr}.mini.one i{height:180px}
+.m1{background:#fff;border:1px solid #ddd}.m2{background:#EFE3CF}.m3{background:#1D4ED8}.m4{background:#1b1f27}.m5{background:#f0f0f0;border:1px solid #ddd}
+.say{background:var(--accent-soft);padding:8px 12px;border-radius:8px;margin-top:12px}
+.files{font-family:ui-monospace,Menlo,monospace;font-size:.9rem;list-style:none;padding:0}.files li{padding:6px 0;border-bottom:1px solid var(--line)}
+.thero{padding-top:40px}
+.thead h1{margin-bottom:8px}
+.thead .tour{margin-top:16px}
+.r2 .phead{padding-bottom:8px}
+.r2 .phead+.sec{padding-top:24px}
