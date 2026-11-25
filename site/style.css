@@ -229,3 +229,15 @@ code { font: .92em/1.4 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 .family a[aria-current="true"]{opacity:1;font-weight:600}
 .family .family-sep{margin-left:auto}
 @media (max-width:40rem){.family .family-sep{margin-left:0}}
+
+/* Pricing tiers and questions (25 Nov 2026) */
+.tiers .tier{display:flex;flex-direction:column}
+.tiers .tier .price{margin:4px 0}
+.tier-list{margin:8px 0 12px;padding-left:1.1em}
+.tier-list li{margin:4px 0}
+.tiers .tier p:last-child{margin-top:auto}
+.faq{border-bottom:1px solid currentColor;border-color:rgba(127,127,127,.3);padding:12px 0}
+.faq summary{cursor:pointer;font-weight:600}
+.faq p{margin:8px 0 0}
+.tiers .tag{align-self:flex-start}
+.prose .faq{margin:0;border-top:0}

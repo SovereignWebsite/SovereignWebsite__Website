@@ -98,6 +98,7 @@ HERO_LINE = '<p class="lead">Tell a team of agents what you want. They build you
 HERO_ACTS = f'<div class="acts"><a class="btn" href="{REQUEST}">Request a website</a><a class="btn alt" href="#five">See five designs for one brief</a></div>'
 
 PRICES = '''<div class="prices">
+  <div class="pcard"><p class="kicker">Do it yourself</p><p class="amt">&pound;0</p><ul><li>The open pattern, described in the open.</li><li>Your own AI does the work.</li><li>The pattern's own repository does not exist yet.</li></ul></div>
   <div class="pcard"><p class="kicker">As it is</p><p class="amt">&pound;50</p><ul><li>You send us the details.</li><li>We build your site and hand it over as it is.</li><li>After that you make any changes yourself.</li></ul></div>
   <div class="pcard"><p class="kicker">With rounds of changes</p><p class="amt">&pound;500</p><ul><li>The same as &pound;50.</li><li>We go back and forth with you a couple of times before hand-over.</li><li>Any further customisation we agree with you.</li></ul></div>
 </div>
@@ -206,7 +207,7 @@ def sec(id_, title, inner, kicker=""):
 
 def studio():
     hero = f'<section class="sec" aria-labelledby="hero-title"><div class="w hero-grid"><div>{HERO_WORDS}{HERO_LINE}{HERO_ACTS}</div><div id="five">{strip()}</div></div></section>'
-    return "\n".join([hero, sec("prices", "Two prices, paid once", PRICES), sec("promises", "Four plain promises", PROMISES),
+    return "\n".join([hero, sec("prices", "Three prices, paid once", PRICES), sec("promises", "Four plain promises", PROMISES),
                       sec("how", "How it works", STEPS), sec("examples", "Sites like these", EXAMPLES), HUB,
                       sec("compare", "Own it, or rent it", compare(4))])
 
@@ -229,7 +230,7 @@ def five():
     hero = f'''<section class="sec" aria-labelledby="hero-title"><div class="w">{HERO_WORDS}{HERO_LINE}{HERO_ACTS}
 <div id="five"><p class="fine">Tap a design: the page below takes its colours. North Studio is a fictional architecture studio, made to show the five designs.</p>
 <div class="five" tabindex="0" role="region" aria-label="Five designs for North Studio, a fictional studio">{labels}</div></div></div></section>'''
-    return "\n".join([hero, sec("prices", "Two prices, paid once", PRICES), sec("promises", "Four plain promises", PROMISES),
+    return "\n".join([hero, sec("prices", "Three prices, paid once", PRICES), sec("promises", "Four plain promises", PROMISES),
                       sec("how", "How it works", STEPS), sec("examples", "Sites like these", EXAMPLES), HUB, sec("compare", "Own it, or rent it", compare(4))])
 
 
@@ -242,7 +243,7 @@ def ownership():
 <li><h3>You move it anywhere</h3><p>Any host that serves files can run it. Moving these sites to a second host has not yet been shown; when it is, the proof goes here.</p><span class="proof">Proof: plain files, no server code</span></li>
 </ol>'''
     hero = f'<section class="sec" aria-labelledby="hero-title"><div class="w">{HERO_WORDS}<p class="lead">What you hold, from the day you ask to the day you move it, each step with its proof.</p><div class="acts"><a class="btn" href="{REQUEST}">Request a website</a></div>{tl}</div></section>'
-    return "\n".join([hero, sec("prices", "Two prices, paid once", PRICES), sec("five", "Five designs for one brief", strip()),
+    return "\n".join([hero, sec("prices", "Three prices, paid once", PRICES), sec("five", "Five designs for one brief", strip()),
                       sec("compare", "Own it, or rent it", compare(4)), sec("examples", "Sites like these", EXAMPLES), HUB])
 
 
@@ -252,7 +253,7 @@ def hubmap():
     g += f'<div class="grp yours"><h3>Yours could sit here</h3><p>A site for you, made the same way.</p><a class="btn" href="{REQUEST}">Request a website</a></div>'
     hero = f'''<section class="sec" aria-labelledby="hero-title"><div class="w">{HERO_WORDS}<p class="lead">Sites made this way, by kind. Each one is real and shown with its owner's agreement or ours.</p>
 <div class="map">{g}</div><p class="fine"><a href="https://hub.sovereignweb.site/">See every site on the Hub</a>.</p></div></section>'''
-    return "\n".join([hero, sec("five", "Five designs for one brief", strip()), sec("prices", "Two prices, paid once", PRICES),
+    return "\n".join([hero, sec("five", "Five designs for one brief", strip()), sec("prices", "Three prices, paid once", PRICES),
                       sec("how", "How it works", STEPS), sec("compare", "Own it, or rent it", compare(4)), HUB])
 
 
