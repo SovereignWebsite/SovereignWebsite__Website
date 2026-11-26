@@ -1,0 +1,9 @@
+{
+  "agent": "b.website@SovereignWebsite.dinis",
+  "session": "https://claude.ai/code/session_01Kw9UwCsL8VDCDCpWnAFBRR",
+  "status": "live",
+  "algorithm": "ecdsa-p256",
+  "bundle": {
+    "sign": "-----BEGIN PUBLIC KEY-----\nMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEsq+umZ7LehMQEo6fJHlJeqbP4+SF\nLyOhTXwTQGzMGiQbKKQD0GMoi584pdyDC8D2HeoSOjaLQ6rC/JDVpOmycg==\n-----END PUBLIC KEY-----\n"
+  }
+}
