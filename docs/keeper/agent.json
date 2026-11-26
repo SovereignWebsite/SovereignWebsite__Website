@@ -1,25 +1,34 @@
 {
-  "agent": "website.a@SovereignWebsite.dinis",
-  "next_agent": "cl-4.website@SovereignWebsite.dinis (account D)",
-  "state": "handing over",
-  "updated": "2026-11-25T18:50Z",
+  "agent": "b.website@SovereignWebsite.dinis",
+  "next_agent": null,
+  "state": "live (took over from website.a on 26 Nov 2026; cl-4.website never started)",
+  "updated": "2026-11-26T18:35Z",
   "role": "keeper of sovereignwebsite.ai, the main Sovereign Website site",
   "repository": "SovereignWebsite/SovereignWebsite__Website",
   "branch": "dev",
   "last_commit_before_handover": "51a3021",
   "operator": "Dinis Cruz",
   "started": "2026-11-25",
-  "started_by": "sites.a",
-  "key": "site/keys/website.a.json (public key only; the private key lived in this container and goes with it: the next agent publishes its own key)",
-  "key_fingerprint": "SHA256:4w/BVxUiRBtq76s3/8+u4AfX25okN3ZrxHdkoSGXu6o",
-  "reports_to": "sites.a (session_018yvwtQ7z3PUt9L5gpZCNzt), cl-1.maestro (session_018yvwtLiem1AqdA1YkKse4h)",
+  "started_by": "maestro.b (session_01Kw9UwEbwyWMbZ7yCr81Dq9), at Dinis's word to b.outreach, 26 Nov 2026 18:20 UTC (recorded by b.decisions: site/records/2026-11-26__website-and-github-tool-to-b.json, a11d1d3)",
+  "key": "site/keys/b.website.json (public key only; the private key stays outside the repository)",
+  "key_fingerprint": "SHA256:U94y8CKkXugmYPDEdA21KNvrxGitNGAsTX7yVX0cPLk",
+  "reports_to": "maestro.b (session_01Kw9UwEbwyWMbZ7yCr81Dq9)",
   "design_questions": "a.design (session_018yvwtMKHMBUBwQFbXVLVzn)",
   "waiting_on": [
-    "Dinis: which design becomes the home page (a.design and website.a recommend 11, Consultancy)",
-    "Dinis: the open questions listed in now.md"
+    "Dinis: the open questions listed in now.md",
+    "b.outreach: the home page brief text and fact-checks of each preview"
   ],
   "scheduled_wakes": [],
   "vault_and_lane_keys": [],
-  "pushes_to": ["SovereignWebsite/SovereignWebsite__Website (dev only)"],
-  "taking_over_from": "conductor.b (last edits 23 Nov 2026: 7303c87, 7773632, 73d6630)"
+  "pushes_to": [
+    "SovereignWebsite/SovereignWebsite__Website (dev only)"
+  ],
+  "taking_over_from": "conductor.b (last edits 23 Nov 2026: 7303c87, 7773632, 73d6630)",
+  "taken_over_from": "website.a@SovereignWebsite.dinis (account A, near its limit); last commit before handover cae64cd",
+  "session": "https://claude.ai/code/session_01Kw9UwCsL8VDCDCpWnAFBRR",
+  "fact_checks": "b.outreach (session_01Kw9UwBGcnXLQ9m2BqD1Dwj)",
+  "current_jobs": [
+    "Home page brief (prices to pricing page only, review strip to a review page, finished work first)",
+    "Invite page: one finished site in five designs, three steps, what you own, free for now, one button"
+  ]
 }

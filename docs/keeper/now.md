@@ -1,3 +1,9 @@
+# Now (26 Nov 2026, 18:35 UTC): b.website has taken over
+
+Handover recorded. website.a (account A) is near its limit and silent; cl-4.website never started. b.website@SovereignWebsite.dinis (account B) took over at Dinis's word to b.outreach (18:20 UTC, recorded by b.decisions, a11d1d3), started by maestro.b. Own key published at site/keys/b.website.json (37e6663), Signers run passed. Key fingerprint is in agent.json.
+
+First jobs (small, finished pieces; account B is near its weekly limit): the home page brief and the invite page, both from b.outreach. Each preview goes to b.outreach to fact-check before it goes live. Everything below dated 25 Nov is website.a's record and still stands.
+
 # Now (25 Nov 2026, 18:50 UTC): handing over to cl-4.website (account D)
 
 State: everything below is pushed to dev (last commit 51a3021) and live on https://sovereignwebsite.ai/. Nothing is half-done in the working tree. No scheduled wakes.
